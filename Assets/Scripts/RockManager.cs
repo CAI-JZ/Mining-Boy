@@ -39,19 +39,12 @@ public class RockManager : MonoBehaviour, Inf_PickRock
             DurBar.alpha = 1;
         }
         CurrentDurability -= pickStrength;
-        if (CurrentDurability < 0)
+        if (CurrentDurability <= 0)
         {
             Destroy(gameObject);
         }
     }
 
-
-    //Durability to 0
-    protected void DurabilityZero()
-    {
-        
-        
-    }
 
     private void FixedUpdate()
     {
@@ -61,17 +54,20 @@ public class RockManager : MonoBehaviour, Inf_PickRock
     private void OnDestroy()
     {
         string sf = CurrentRock.SpiecalFeature;
-        Player.Instance.MoneyUpdate(Value);
-
-        switch (sf)
+        if (Player.Instance != null)
         {
-            case "ADD_OXYGEN":
-                Player.Instance.CurrentOxygen += 30;
-                break;
-            default:
-                print("No Skill");
-                break;
+            Player.Instance.MoneyUpdate(Value);
 
+            switch (sf)
+            {
+                case "ADD_OXYGEN":
+                    Player.Instance.AddOxygen(CurrentRock.FeatureValue);
+                    break;
+                default:
+                    print("No Skill");
+                    break;
+
+            }
         }
     }
 

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RockUnit6
   m_EditorClassIdentifier: 
   Value: 200
-  MaxDurability: 20
+  MaxDurability: 25
   ArtWork: {fileID: 781295917663337031, guid: dee04ef56ef7a884bae7dfdedd0f4953, type: 3}
   AppearanceLevel: 0
-  SpecialFeatureType: 2
+  SpiecalFeature: 
+  FeatureValue: 0

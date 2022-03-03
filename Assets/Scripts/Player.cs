@@ -10,21 +10,24 @@ public class Player : MonoBehaviour
 
     // player basic data
     public float CurrentOxygen;
-    [SerializeField]
+    [SerializeField] 
     public float MaxOxygen;
     public float Money { get; private set; }
 
-    [SerializeField]
+    [SerializeField] 
     private int ViewRange;
 
-    // Pick Data
-    private int PickNum;
-    private float PickStength = 3;
-    public GameObject[] Picks;
-    public GameObject CheckPoint;
-    private bool IsHit;
+    private GameObject player;
 
-  
+    // Pick Data
+    [SerializeField]
+    private GameObject[] Picks;
+    [SerializeField] 
+    private float PickStength = 3;
+    private GameObject CheckPoint;
+    private bool IsHit;
+    private int PickNum;
+
     private void Awake()
     {
         if (Instance == null)
@@ -36,12 +39,13 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        Picks[0].SetActive(true);
 
+        player = GameObject.FindGameObjectWithTag("Player");
+        CheckPoint = player.transform.GetChild(4).gameObject;
         Money = 0;
     }
 
+    // !!这里要想一下到底怎么定义氧气的消耗。
     float UseOxygen(float Layer)
     {
         CurrentOxygen -= GameManager.instance.OxygenCost;
@@ -64,12 +68,12 @@ public class Player : MonoBehaviour
 
     void PickUpdate()
     {
-        if (PickNum < Picks.Length - 1)
+        if (PickNum < Picks.Length)
         {
             Picks[PickNum].SetActive(false);
             PickNum = PickNum + 1;
             Picks[PickNum].SetActive(true);
-            PickStength += 10;
+            PickStength += 10;   
         }
     }
 
@@ -88,19 +92,27 @@ public class Player : MonoBehaviour
                     Inf_PickRock Rock = Hitinfo.collider.GetComponent<Inf_PickRock>();
                     if (Rock != null)
                     {
-                        //print(Hitinfo.collider.tag);
                         Rock.UsePick(PickStength);
+                        print("current cost " + GameManager.instance.OxygenCost);
                         CurrentOxygen = CurrentOxygen - GameManager.instance.OxygenCost;
-                        print(CurrentOxygen);
+                    }
+                    else
+                    {
+                        print("Rock = null");
                     }
                 }
+                else
+                {
+                    print("Collider = null");
+                }
+
             }
         }
-
     }
 
     public void MoneyUpdate(float Incoming)
     {
+        print(Incoming);
         Money = Money + Incoming;
         //print(Money);
     }
@@ -128,4 +140,24 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void AddOxygen(float Oxygen)
+    {
+        float Oxy = CurrentOxygen + Oxygen;
+        if (Oxy < MaxOxygen)
+        {
+            CurrentOxygen = Oxy;
+        }
+        else 
+        {
+            CurrentOxygen = MaxOxygen;
+        }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        CheckPoint = player.transform.GetChild(4).gameObject;
+    }
+
 }

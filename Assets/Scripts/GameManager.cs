@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     //GameState
-    private float LevelIndex;
+    private int LevelIndex;
     public float OxygenCost;
 
     public static GameManager instance { get; private set; }
@@ -19,21 +20,22 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else 
+        else
         {
             Destroy(gameObject);
         }
 
         //Set Initial Data;
-        LevelIndex = 1;
-        OxygenCost = 5;
+        LevelIndex = 0;
+        OxygenCost = 0;
     }
 
-    public void LevelUpdate()
+    public void NextLevel()
     {
-        LevelIndex += 1;
+        LevelIndex = SceneManager.GetActiveScene().buildIndex+1;
+        SceneManager.LoadScene(LevelIndex);
         OxygenCost = LevelIndex * 5;
+        print("OxygenCost: " + OxygenCost);
     }
-
 
 }

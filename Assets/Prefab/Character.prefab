@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5330884552623356623}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6291762399338101715}
   - component: {fileID: 193574334}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CopperPick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6291762399647075635}
   - component: {fileID: 908952971}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SilverPick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6291762400088561506}
   - component: {fileID: 942073792}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NormalPick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,8 +289,7 @@ GameObject:
   - component: {fileID: 6291762400099010139}
   - component: {fileID: 6291762400099010134}
   - component: {fileID: 487374584}
-  - component: {fileID: 1200871299}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -429,26 +428,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
---- !u!114 &1200871299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6291762400099010137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d182552fc3b61d548aceec3658408095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Oxygen: 100
-  ViewRange: 2
-  Picks:
-  - {fileID: 6291762400088561505}
-  - {fileID: 6291762399338101714}
-  - {fileID: 6291762399647075634}
-  - {fileID: 6291762400396788057}
-  CheckPoint: {fileID: 5256270098184212766}
 --- !u!1 &6291762400396788057
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6291762400396788058}
   - component: {fileID: 1397599636}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GoldPick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

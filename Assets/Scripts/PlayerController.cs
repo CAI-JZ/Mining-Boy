@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        m_Rigid = GetComponent<Rigidbody2D>();   
+        m_Rigid = GetComponent<Rigidbody2D>();
+        DontDestroyOnLoad(gameObject);
     }
 
  
@@ -30,7 +31,6 @@ public class PlayerController : MonoBehaviour
         if (MoveDir != Vector2.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, MoveDir);
-            //CheckPoint.transform.rotation = Quaternion.RotateTowards(CheckPoint.transform.rotation, toRotation,1440*Time.deltaTime);
             CheckPoint.transform.rotation = toRotation;
         }
     }
@@ -42,8 +42,11 @@ public class PlayerController : MonoBehaviour
 
     void Move(float x, float y)
     {
-        m_Rigid.MovePosition(new Vector2(transform.position.x + x * Speed * Time.deltaTime, transform.position.y + y * Speed * Time.deltaTime));
-       
+        m_Rigid.MovePosition(new Vector2(transform.position.x + x * Speed * Time.deltaTime, transform.position.y + y * Speed * Time.deltaTime));  
     }
 
+    private void OnLevelWasLoaded(int level)
+    {
+        transform.position = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+    }
 }
