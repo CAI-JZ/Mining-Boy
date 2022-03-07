@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     //GameState
-    private int LevelIndex;
+    public int LevelIndex;
     public float OxygenCost;
+    [SerializeField]
+    private GameObject UI;
+    private GameObject Player;
 
     public static GameManager instance { get; private set; }
     private GameManager() { }
-
 
     private void Awake()
     {
@@ -28,14 +30,22 @@ public class GameManager : MonoBehaviour
         //Set Initial Data;
         LevelIndex = 0;
         OxygenCost = 0;
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void GameStart()
+    {
+        UI.SendMessage("GameStart");
+        NextLevel();
     }
 
     public void NextLevel()
     {
         LevelIndex = SceneManager.GetActiveScene().buildIndex+1;
         SceneManager.LoadScene(LevelIndex);
+        //Player.SendMessage("LevelLoad");
         OxygenCost = LevelIndex * 5;
-        print("OxygenCost: " + OxygenCost);
+        //print("OxygenCost: " + OxygenCost);
     }
 
 }

@@ -19,18 +19,13 @@ public class RockButton : MonoBehaviour, Inf_PickRock
         {
             case 0: //start game;
                 print("ToL1");
-                GameManager.instance.NextLevel();
+                GameManager.instance.GameStart();
                 break;
             case 1:
                 print("EndGme");
                 Application.Quit();
                 break;
         }
-    }
-
-    private void OnDestroy()
-    {
-        //.instance.NextLevel();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

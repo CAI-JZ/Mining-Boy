@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] 
     private int ViewRange;
-
     private GameObject player;
 
     // Pick Data
@@ -24,6 +23,7 @@ public class Player : MonoBehaviour
     private GameObject[] Picks;
     [SerializeField] 
     private float PickStength = 3;
+    [SerializeField]
     private GameObject CheckPoint;
     private bool IsHit;
     private int PickNum;
@@ -40,8 +40,6 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        CheckPoint = player.transform.GetChild(4).gameObject;
         Money = 0;
     }
 
@@ -62,7 +60,6 @@ public class Player : MonoBehaviour
         {
             PickUpdate();
         }
-
         Pick(IsHit);
     }
 
@@ -88,13 +85,12 @@ public class Player : MonoBehaviour
 
                 if (Hitinfo.collider != null)
                 {
-                    print(Hitinfo.collider.tag);
+                    //print(Hitinfo.collider.tag);
                     Inf_PickRock Rock = Hitinfo.collider.GetComponent<Inf_PickRock>();
                     if (Rock != null)
                     {
-                        Rock.UsePick(PickStength);
-                        print("current cost " + GameManager.instance.OxygenCost);
-                        CurrentOxygen = CurrentOxygen - GameManager.instance.OxygenCost;
+                        CurrentOxygen = CurrentOxygen - GameManager.instance.OxygenCost; 
+                        Rock.UsePick(PickStength);                  
                     }
                     else
                     {
@@ -152,12 +148,6 @@ public class Player : MonoBehaviour
         {
             CurrentOxygen = MaxOxygen;
         }
-    }
-
-    private void OnLevelWasLoaded(int level)
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        CheckPoint = player.transform.GetChild(4).gameObject;
     }
 
 }

@@ -19,7 +19,8 @@ public class RockManager : MonoBehaviour, Inf_PickRock
     private CanvasGroup DurBar;
 
     private void Awake()
-    {  
+    {
+        int level = GameManager.instance.LevelIndex;
         int index = Random.Range(0, Rocks.Length);
         CurrentRock = Rocks[index];
 
@@ -41,7 +42,8 @@ public class RockManager : MonoBehaviour, Inf_PickRock
         CurrentDurability -= pickStrength;
         if (CurrentDurability <= 0)
         {
-            Destroy(gameObject);
+            FinishPick();
+            gameObject.SetActive(false);
         }
     }
 
@@ -51,7 +53,7 @@ public class RockManager : MonoBehaviour, Inf_PickRock
         RockDur.value = CurrentDurability / MaxDurability;
     }
 
-    private void OnDestroy()
+    private void FinishPick()
     {
         string sf = CurrentRock.SpiecalFeature;
         if (Player.Instance != null)
@@ -61,7 +63,9 @@ public class RockManager : MonoBehaviour, Inf_PickRock
             switch (sf)
             {
                 case "ADD_OXYGEN":
+                    print("Player current max oxygen " + Player.Instance.MaxOxygen +" []" + "Player current oxygen" + Player.Instance.CurrentOxygen);
                     Player.Instance.AddOxygen(CurrentRock.FeatureValue);
+                    print("Player max oxygen" + Player.Instance.MaxOxygen);
                     break;
                 default:
                     print("No Skill");
@@ -70,5 +74,7 @@ public class RockManager : MonoBehaviour, Inf_PickRock
             }
         }
     }
+    
+    
 
 }

@@ -49,4 +49,9 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = GameObject.FindGameObjectWithTag("Respawn").transform.position;
     }
+
+    public void LevelLoad()
+    {
+        
+    }
 }

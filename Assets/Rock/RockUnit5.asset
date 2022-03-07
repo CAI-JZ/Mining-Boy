@@ -17,4 +17,4 @@ MonoBehaviour:
   ArtWork: {fileID: 8352880968954772482, guid: dee04ef56ef7a884bae7dfdedd0f4953, type: 3}
   AppearanceLevel: 0
   SpiecalFeature: ADD_OXYGEN
-  FeatureValue: 40
+  FeatureValue: 55
