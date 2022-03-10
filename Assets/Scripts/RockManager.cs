@@ -20,14 +20,25 @@ public class RockManager : MonoBehaviour, Inf_PickRock
 
     private void Awake()
     {
+       
         int level = GameManager.instance.LevelIndex;
-        int index = Random.Range(0, Rocks.Length);
-        CurrentRock = Rocks[index];
+       
 
-        GetComponent<SpriteRenderer>().sprite = CurrentRock.ArtWork;
-        Value = CurrentRock.Value;
-        MaxDurability = CurrentRock.MaxDurability;
-        CurrentDurability = MaxDurability;
+        int SpawnInt = Random.Range(0, 10);
+        if (SpawnInt % 3 > 1)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            int index = Random.Range(0, Rocks.Length);
+            CurrentRock = Rocks[index];
+            GetComponent<SpriteRenderer>().sprite = CurrentRock.ArtWork;
+            Value = CurrentRock.Value;
+            MaxDurability = CurrentRock.MaxDurability;
+            CurrentDurability = MaxDurability;
+        }
+       
     }
 
 

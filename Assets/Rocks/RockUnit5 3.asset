@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb8b8f27aed173488d395bf663b77a8, type: 3}
+  m_Name: RockUnit5 3
+  m_EditorClassIdentifier: 
+  Value: 100
+  MaxDurability: 15
+  ArtWork: {fileID: 9056431699914740801, guid: acf560b699e4ae54d8edbeec88caff32, type: 3}
+  AppearanceLevel: 0
+  SpiecalFeature: ADD_OXYGEN
+  FeatureValue: 55
