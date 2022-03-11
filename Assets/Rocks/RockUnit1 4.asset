@@ -15,6 +15,6 @@ MonoBehaviour:
   Value: 10
   MaxDurability: 2
   ArtWork: {fileID: -4209556597541047147, guid: acf560b699e4ae54d8edbeec88caff32, type: 3}
-  AppearanceLevel: 0
+  AppearanceLevel: 1
   SpiecalFeature: 
   FeatureValue: 0

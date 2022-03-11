@@ -12,7 +12,8 @@ public class RockManager : MonoBehaviour, Inf_PickRock
     [SerializeField]
     private Rock[] Rocks;
     private Rock CurrentRock;
-
+    private int RockCount = 0;
+    
     [SerializeField]
     private Slider RockDur;
     [SerializeField]
@@ -24,23 +25,35 @@ public class RockManager : MonoBehaviour, Inf_PickRock
         int level = GameManager.instance.LevelIndex;
        
 
-        int SpawnInt = Random.Range(0, 10);
-        if (SpawnInt % 3 > 1)
+        int SpawnInt = Random.Range(0, 20);
+        if (SpawnInt % (level+2) > level)
         {
             gameObject.SetActive(false);
         }
         else
         {
-            int index = Random.Range(0, Rocks.Length);
-            CurrentRock = Rocks[index];
-            GetComponent<SpriteRenderer>().sprite = CurrentRock.ArtWork;
-            Value = CurrentRock.Value;
-            MaxDurability = CurrentRock.MaxDurability;
-            CurrentDurability = MaxDurability;
+            //Get random Index
+            foreach (Rock r in Rocks)
+            {
+                if (r.AppearanceLevel <= level)
+                {
+                    RockCount++;
+                }
+            }
+            int Index = Random.Range(0, RockCount);
+            SetRockInfo(Index);
         }
        
     }
 
+    private void SetRockInfo(int index)
+    {
+        CurrentRock = Rocks[index];
+        GetComponent<SpriteRenderer>().sprite = CurrentRock.ArtWork;
+        Value = CurrentRock.Value;
+        MaxDurability = CurrentRock.MaxDurability;
+        CurrentDurability = MaxDurability;
+    }
 
 
     //lose durability

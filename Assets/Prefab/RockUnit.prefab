@@ -262,7 +262,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.85, y: 0.85}
   m_EdgeRadius: 0
 --- !u!50 &3585262455788992622
 Rigidbody2D:
@@ -305,20 +305,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 3585262455788992626}
     m_ColliderPaths:
-    - - X: 4999707
-        Y: -5000000
-      - X: 4999707
-        Y: 5000000
-      - X: -5000000
-        Y: 4999707
-      - X: -4999707
-        Y: -5000000
+    - - X: 4249707
+        Y: -4250000
+      - X: 4249707
+        Y: 4250000
+      - X: -4250000
+        Y: 4249707
+      - X: -4249707
+        Y: -4250000
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.4999414, y: -0.5}
-      - {x: 0.4999414, y: 0.5}
-      - {x: -0.5, y: 0.4999414}
-      - {x: -0.4999414, y: -0.5}
+    - - {x: 0.4249414, y: -0.425}
+      - {x: 0.4249414, y: 0.425}
+      - {x: -0.425, y: 0.4249414}
+      - {x: -0.4249414, y: -0.425}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!114 &1912966574
@@ -348,12 +348,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9a10056d1b158b43a73c01eb3dc0296, type: 2}
   - {fileID: 11400000, guid: b7380b33b636cc049a4688725df8924e, type: 2}
   - {fileID: 11400000, guid: 4952853ac1617154d90815ba6097c136, type: 2}
-  - {fileID: 11400000, guid: f9db033adf375a744b94bd0c5fa2c985, type: 2}
-  - {fileID: 11400000, guid: ebda9483778b3304892f873df9d8b482, type: 2}
   - {fileID: 11400000, guid: 051ce2d653b563049882406df8409752, type: 2}
   - {fileID: 11400000, guid: 2bbc2267ef4e7f54d8f52b5a33189cff, type: 2}
-  - {fileID: 11400000, guid: 677f9f59bb0670e4789a3be908010092, type: 2}
-  - {fileID: 11400000, guid: 2e52a089bfd99044db1ca917ba2b6f64, type: 2}
   - {fileID: 11400000, guid: 7948b7670c3355249bbe4c08dcd85f06, type: 2}
   RockDur: {fileID: 272836770412224877}
   DurBar: {fileID: 71907908}
@@ -376,7 +372,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b2cbec0d8bedc984c85b9970d52ae05d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -394,8 +390,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2011907045
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

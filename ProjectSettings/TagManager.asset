@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 243636713
+    locked: 0
   - name: Floor
     uniqueID: 1168468349
     locked: 0
@@ -48,15 +51,18 @@ TagManager:
   - name: UI
     uniqueID: 2850169291
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Pick
     uniqueID: 3654870833
     locked: 0
   - name: Wall
     uniqueID: 2087476737
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Dec
     uniqueID: 2615498083
+    locked: 0
+  - name: Dark
+    uniqueID: 3117946677
     locked: 0
