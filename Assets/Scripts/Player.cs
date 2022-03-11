@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public float CurrentOxygen;
     [SerializeField] 
     public float MaxOxygen;
+    private float OxygenCost;
+         
     public float Money { get; private set; }
 
     [SerializeField] 
@@ -43,11 +45,10 @@ public class Player : MonoBehaviour
         Money = 0;
     }
 
-    // !!这里要想一下到底怎么定义氧气的消耗。
-    float UseOxygen(float Layer)
+    // Add oxy cost when get deeper cave;
+    public void UpdateOxyCost(float Layer)
     {
-        CurrentOxygen -= GameManager.instance.OxygenCost;
-        return CurrentOxygen;
+        OxygenCost = Mathf.Pow(Layer, 2);
     }
 
 
@@ -65,21 +66,24 @@ public class Player : MonoBehaviour
 
     void PickUpdate()
     {
-        if (PickNum < Picks.Length)
+        if (PickNum < Picks.Length-1)
         {
             Picks[PickNum].SetActive(false);
             PickNum = PickNum + 1;
             Picks[PickNum].SetActive(true);
-            PickStength += 10;   
+            print(PickNum);
+            PickStength += 10;
+        }
+        else
+        {
+            print("Can not update anymore");
         }
     }
 
     void Pick(bool Click)
     {
-        if (CurrentOxygen > 0)
+        if (CurrentOxygen > 0 && Click)
         {
-            if (Click)
-            {
                 RaycastHit2D Hitinfo = Physics2D.Raycast(CheckPoint.transform.position, CheckPoint.transform.right, 1f);
                 Debug.DrawRay(CheckPoint.transform.position, CheckPoint.transform.right * 2, Color.red, 10f);
 
@@ -89,20 +93,10 @@ public class Player : MonoBehaviour
                     Inf_PickRock Rock = Hitinfo.collider.GetComponent<Inf_PickRock>();
                     if (Rock != null)
                     {
-                        CurrentOxygen = CurrentOxygen - GameManager.instance.OxygenCost; 
-                        Rock.UsePick(PickStength);                  
-                    }
-                    else
-                    {
-                        print("Rock = null");
+                        CurrentOxygen -= OxygenCost;
+                        Rock.UsePick(PickStength);
                     }
                 }
-                else
-                {
-                    print("Collider = null");
-                }
-
-            }
         }
     }
 
@@ -137,7 +131,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddOxygen(float Oxygen)
+    public void AddOxygen(float Oxygen, float cost)
     {
         float Oxy = CurrentOxygen + Oxygen;
         if (Oxy < MaxOxygen)
@@ -148,6 +142,7 @@ public class Player : MonoBehaviour
         {
             CurrentOxygen = MaxOxygen;
         }
+        Money -= cost;
     }
 
 }

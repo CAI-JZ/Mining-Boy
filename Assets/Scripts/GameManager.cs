@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
     public float OxygenCost;
     [SerializeField]
     private GameObject UI;
-    private GameObject Player;
-
+   
     public static GameManager instance { get; private set; }
     private GameManager() { }
 
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
         //Set Initial Data;
         LevelIndex = 0;
         OxygenCost = 0;
-        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void GameStart()
@@ -43,9 +41,8 @@ public class GameManager : MonoBehaviour
     {
         LevelIndex = SceneManager.GetActiveScene().buildIndex+1;
         SceneManager.LoadScene(LevelIndex);
-        //Player.SendMessage("LevelLoad");
-        OxygenCost = LevelIndex * 5;
-        //print("OxygenCost: " + OxygenCost);
+        Player.Instance.UpdateOxyCost(LevelIndex);
+        
     }
 
 }

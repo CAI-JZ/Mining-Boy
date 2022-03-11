@@ -88,7 +88,7 @@ public class RockManager : MonoBehaviour, Inf_PickRock
             {
                 case "ADD_OXYGEN":
                     print("Player current max oxygen " + Player.Instance.MaxOxygen +" []" + "Player current oxygen" + Player.Instance.CurrentOxygen);
-                    Player.Instance.AddOxygen(CurrentRock.FeatureValue);
+                    Player.Instance.AddOxygen(CurrentRock.FeatureValue,0);
                     print("Player max oxygen" + Player.Instance.MaxOxygen);
                     break;
                 default:
