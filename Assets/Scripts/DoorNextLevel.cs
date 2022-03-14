@@ -2,25 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorNextLevel : MonoBehaviour
+public class DoorNextLevel : MonoBehaviour,Inf_Interact
 {
-    bool GetIn;
+    [SerializeField]
+    bool DoorOpen;
+    bool IsTouch;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnEnable()
     {
-       
+        transform.GetChild(0).gameObject.SetActive(true);
+        DoorOpen = false;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OpenDoor()
     {
-        if (GetIn)
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        DoorOpen = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player" )
         {
-            GameManager.instance.NextLevel();
-        } 
+            IsTouch = true;
+            print("touch");
+        }
     }
 
-    private void Update()
+    public void PlayerInteract(float pickStrength)
     {
-        GetIn = Input.GetKeyDown(KeyCode.F);
+        print("click");
+        if (IsTouch && DoorOpen)
+        {
+            //ShowUI to chose - tbc;
+            GameManager.instance.NextLevel();
+        }  
     }
 }

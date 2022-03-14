@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         LevelIndex = SceneManager.GetActiveScene().buildIndex+1;
         SceneManager.LoadScene(LevelIndex);
         Player.Instance.UpdateOxyCost(LevelIndex);
+        print("level: " + LevelIndex);
         
     }
 

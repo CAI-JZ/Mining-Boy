@@ -1077,11 +1077,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
---- !u!1 &1245576014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5256270098184212766, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
-  m_PrefabInstance: {fileID: 1200871297}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1274824440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6291762399338101714, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
@@ -1556,8 +1551,6 @@ MonoBehaviour:
   - {fileID: 1119075022}
   - {fileID: 153222346}
   - {fileID: 153222346}
-  PickStength: 3
-  CheckPoint: {fileID: 1245576014}
 --- !u!4 &1992554302
 Transform:
   m_ObjectHideFlags: 0
@@ -1609,6 +1602,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261351922770513855, guid: 10cb2aee332de9a4b8a5c61c22c32389, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261351922770513855, guid: 10cb2aee332de9a4b8a5c61c22c32389, type: 3}
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4261351924194473486, guid: 10cb2aee332de9a4b8a5c61c22c32389, type: 3}

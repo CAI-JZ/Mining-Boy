@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockButton : MonoBehaviour, Inf_PickRock
+public class RockButton : MonoBehaviour, Inf_Interact
 {
     [SerializeField]
     private int Function;
@@ -12,8 +12,7 @@ public class RockButton : MonoBehaviour, Inf_PickRock
     [SerializeField]
     private CanvasGroup ButtonName;
 
-    
-    public void UsePick(float pickStrength)
+    public void PlayerInteract(float pickStrength)
     {
         switch (Function)
         {

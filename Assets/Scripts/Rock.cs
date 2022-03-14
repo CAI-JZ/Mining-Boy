@@ -11,4 +11,5 @@ public class Rock : ScriptableObject
     public int AppearanceLevel;
     public string SpiecalFeature;
     public float FeatureValue;
+    public int RockLevel;
 }

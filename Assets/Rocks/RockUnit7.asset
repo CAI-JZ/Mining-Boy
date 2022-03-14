@@ -15,4 +15,7 @@ MonoBehaviour:
   Value: 0
   MaxDurability: 0
   ArtWork: {fileID: 0}
-  AppearanceLevel: 0
+  AppearanceLevel: 7
+  SpiecalFeature: 
+  FeatureValue: 0
+  RockLevel: 3

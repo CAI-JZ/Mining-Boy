@@ -15,6 +15,7 @@ MonoBehaviour:
   Value: 100
   MaxDurability: 15
   ArtWork: {fileID: 2542510393671944472, guid: acf560b699e4ae54d8edbeec88caff32, type: 3}
-  AppearanceLevel: 3
-  SpiecalFeature: ADD_OXYGEN
-  FeatureValue: 55
+  AppearanceLevel: 5
+  SpiecalFeature: 
+  FeatureValue: 0
+  RockLevel: 2

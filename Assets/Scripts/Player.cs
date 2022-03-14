@@ -23,12 +23,10 @@ public class Player : MonoBehaviour
     // Pick Data
     [SerializeField]
     private GameObject[] Picks;
-    [SerializeField] 
     private float PickStength = 3;
-    [SerializeField]
-    private GameObject CheckPoint;
-    private bool IsHit;
-    private int PickNum;
+    public int PickLevel { get; private set; }
+
+    public float Strength => PickStength;
 
     private void Awake()
     {
@@ -43,6 +41,7 @@ public class Player : MonoBehaviour
         }
 
         Money = 0;
+        
     }
 
     // Add oxy cost when get deeper cave;
@@ -55,23 +54,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsHit = Input.GetKeyDown(KeyCode.Mouse0);
     
         if (Input.GetMouseButtonDown(1))
         {
             PickUpdate();
         }
-        Pick(IsHit);
+        
     }
 
     void PickUpdate()
     {
-        if (PickNum < Picks.Length-1)
+        if (PickLevel < Picks.Length-1)
         {
-            Picks[PickNum].SetActive(false);
-            PickNum = PickNum + 1;
-            Picks[PickNum].SetActive(true);
-            print(PickNum);
+            Picks[PickLevel].SetActive(false);
+            PickLevel = PickLevel + 1;
+            Picks[PickLevel].SetActive(true);
+            print(PickLevel);
             PickStength += 10;
         }
         else
@@ -80,25 +78,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Pick(bool Click)
-    {
-        if (CurrentOxygen > 0 && Click)
-        {
-                RaycastHit2D Hitinfo = Physics2D.Raycast(CheckPoint.transform.position, CheckPoint.transform.right, 1f);
-                Debug.DrawRay(CheckPoint.transform.position, CheckPoint.transform.right * 2, Color.red, 10f);
-
-                if (Hitinfo.collider != null)
-                {
-                    //print(Hitinfo.collider.tag);
-                    Inf_PickRock Rock = Hitinfo.collider.GetComponent<Inf_PickRock>();
-                    if (Rock != null)
-                    {
-                        CurrentOxygen -= OxygenCost;
-                        Rock.UsePick(PickStength);
-                    }
-                }
-        }
-    }
+   
 
     public void MoneyUpdate(float Incoming)
     {
@@ -131,6 +111,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void UseOxygen()
+    {
+        CurrentOxygen -= OxygenCost;  
+    }
+
     public void AddOxygen(float Oxygen, float cost)
     {
         float Oxy = CurrentOxygen + Oxygen;
@@ -145,4 +130,11 @@ public class Player : MonoBehaviour
         Money -= cost;
     }
 
+    void OxygenEmpty()
+    {
+        if (CurrentOxygen <= 0)
+        { 
+            //PlayerDie
+        }
+    }
 }

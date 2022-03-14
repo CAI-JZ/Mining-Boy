@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RockManager : MonoBehaviour, Inf_PickRock
+public class RockManager : MonoBehaviour, Inf_Interact
 {
-
+    //RockInfo
     private float Value;
     private float CurrentDurability;
     private float MaxDurability;
+    private int RockLevel;
+
+    //RockChoose
     [SerializeField]
     private Rock[] Rocks;
     private Rock CurrentRock;
-    private int RockCount = 0;
+    [SerializeField]
+    private bool UseRandom = true;
+    [SerializeField]
+    private Rock UseRock;
     
+    //UI
     [SerializeField]
     private Slider RockDur;
     [SerializeField]
@@ -21,60 +28,69 @@ public class RockManager : MonoBehaviour, Inf_PickRock
 
     private void Awake()
     {
-       
-        int level = GameManager.instance.LevelIndex;
-       
-
-        int SpawnInt = Random.Range(0, 20);
-        if (SpawnInt % (level+2) > level)
+        if (UseRandom)
         {
-            gameObject.SetActive(false);
+            int level = GameManager.instance.LevelIndex;
+
+            int SpawnInt = Random.Range(0, 20);
+            
+            if (SpawnInt % (level + 2) > level)// Set if rock SPAWN;
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                //Get random Index
+                int rockCount = 0;
+                foreach (Rock r in Rocks)
+                {
+                    if (r.AppearanceLevel <= level)
+                    {
+                        rockCount++;
+                    }
+                }
+                int Index = Random.Range(0, rockCount);
+                SetRockInfo(Rocks[Index]);
+            }
         }
         else
         {
-            //Get random Index
-            foreach (Rock r in Rocks)
-            {
-                if (r.AppearanceLevel <= level)
-                {
-                    RockCount++;
-                }
-            }
-            int Index = Random.Range(0, RockCount);
-            SetRockInfo(Index);
+            SetRockInfo(UseRock);
         }
-       
+
     }
 
-    private void SetRockInfo(int index)
+    private void SetRockInfo(Rock rock)
     {
-        CurrentRock = Rocks[index];
+        CurrentRock = rock;
         GetComponent<SpriteRenderer>().sprite = CurrentRock.ArtWork;
         Value = CurrentRock.Value;
         MaxDurability = CurrentRock.MaxDurability;
         CurrentDurability = MaxDurability;
-    }
-
-
-    //lose durability
-    public void UsePick(float pickStrength)
-    {
-        if (CurrentDurability == MaxDurability)
-        {
-            DurBar.alpha = 1;
-        }
-        CurrentDurability -= pickStrength;
-        if (CurrentDurability <= 0)
-        {
-            FinishPick();
-            gameObject.SetActive(false);
-        }
+        RockLevel = CurrentRock.RockLevel;
     }
 
 
     private void FixedUpdate()
     {
         RockDur.value = CurrentDurability / MaxDurability;
+    }
+   
+    public void PlayerInteract(float pickStrength)
+    {
+        if (CurrentDurability == MaxDurability)
+        {
+            DurBar.alpha = 1;
+        }
+        if (RockLevel <= Player.Instance.PickLevel)
+        { 
+            CurrentDurability -= pickStrength;
+            if (CurrentDurability <= 0)
+            {
+            FinishPick();
+            gameObject.SetActive(false);
+            }
+        }
     }
 
     private void FinishPick()
@@ -98,7 +114,5 @@ public class RockManager : MonoBehaviour, Inf_PickRock
             }
         }
     }
-    
-    
 
 }
