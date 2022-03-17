@@ -16,17 +16,24 @@ public class Player : MonoBehaviour
          
     public float Money { get; private set; }
 
-    [SerializeField] 
-    private int ViewRange;
-    private GameObject player;
-
+    [Header("¡¾Object¡¿")]
     // Pick Data
     [SerializeField]
     private GameObject[] Picks;
+    [SerializeField]
+    private Light View;
+
+
     private float PickStength = 3;
     public int PickLevel { get; private set; }
-
     public float Strength => PickStength;
+
+
+
+    [Header("¡¾Test¡¿")]
+    [SerializeField]
+    private int Viel;
+
 
     private void Awake()
     {
@@ -40,26 +47,30 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Money = 0;
-        
+        Money = 0;    
     }
+
+    private void Update()
+    {
+        UpdateViewFiled(Viel);
+       
+    }
+
+
+
+
+
 
     // Add oxy cost when get deeper cave;
     public void UpdateOxyCost(float Layer)
     {
         OxygenCost = Mathf.Pow(Layer, 2);
     }
-
-
-    // Update is called once per frame
-    void Update()
+    public void MoneyUpdate(float Incoming)
     {
-    
-        if (Input.GetMouseButtonDown(1))
-        {
-            PickUpdate();
-        }
-        
+        print(Incoming);
+        Money = Money + Incoming;
+        //print(Money);
     }
 
     void PickUpdate()
@@ -70,50 +81,53 @@ public class Player : MonoBehaviour
             PickLevel = PickLevel + 1;
             Picks[PickLevel].SetActive(true);
             print(PickLevel);
-            PickStength += 10;
+            PickStength += 5;
         }
         else
         {
             print("Can not update anymore");
         }
+    } 
+
+
+    public void updateOxygen(float newOxy)
+    {
+        MaxOxygen = newOxy;
+        CurrentOxygen = MaxOxygen;
     }
 
-   
-
-    public void MoneyUpdate(float Incoming)
+    public void UpdateViewFiled(int lightLevel)
     {
-        print(Incoming);
-        Money = Money + Incoming;
-        //print(Money);
-    }
-
-    public void UpdateTools(int ToolType, float Cost)
-    {
-        if (Money >= Cost)
+        switch (lightLevel)
         {
-            Money -= Cost;
-            switch (ToolType)
-            {
-                case 1:
-                    print("buy a New Tool");
-                    PickUpdate();
-                    break;
-                case 2:
-                    print("buy a new OxygenValue");
-                    break;
-                case 3:
-                    print("Buy a new glass");
-                    break;
-                case 4:
-                    print("Buy a new Luck");
-                    break;
-            }
+            case 1:
+                View.range = 5;
+                View.intensity = 5;
+                break;
+            case 2:
+                View.range = 10;
+                View.intensity = 2.5f;
+                break;
+            case 3:
+                View.range = 20;
+                View.intensity = 1.7f;
+                break;
         }
     }
 
+
     public void UseOxygen()
     {
-        CurrentOxygen -= OxygenCost;  
+        float oxy = CurrentOxygen - OxygenCost;
+        if (oxy > 0)
+        {
+            CurrentOxygen = oxy;
+        }
+        else
+        { 
+            //game over;
+        }
+         
     }
 
     public void AddOxygen(float Oxygen, float cost)
@@ -128,13 +142,5 @@ public class Player : MonoBehaviour
             CurrentOxygen = MaxOxygen;
         }
         Money -= cost;
-    }
-
-    void OxygenEmpty()
-    {
-        if (CurrentOxygen <= 0)
-        { 
-            //PlayerDie
-        }
     }
 }

@@ -1,2 +1,4 @@
-Greeting!
-Welcome<0.5> to the <color=#F8A800>Land between</color>.
+Greeting...
+Traveller from beyond the fog.
+Welcome<0.5> to the <color=#F8A800>Land Between</color>.
+I<0.3> am  <color=#F8A800>Melina</color>.
