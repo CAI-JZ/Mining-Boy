@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 9063495249199064728}
   m_Layer: 0
   m_Name: DoorPoint
-  m_TagString: Door
+  m_TagString: Item
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03782aa3230178f479385fa5aa52f6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorOpen: 1
+  DoorOpen: 0
 --- !u!61 &9063495249199064728
 BoxCollider2D:
   m_ObjectHideFlags: 0

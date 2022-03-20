@@ -6,7 +6,7 @@ public class DoorNextLevel : MonoBehaviour,Inf_Interact
 {
     [SerializeField]
     bool DoorOpen;
-    bool IsTouch;
+
 
     private void OnEnable()
     {
@@ -19,24 +19,20 @@ public class DoorNextLevel : MonoBehaviour,Inf_Interact
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
         DoorOpen = true;
+        UIManager.Instance.ShowTip("Door is open");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Player" )
-        {
-            IsTouch = true;
-            print("touch");
-        }
-    }
 
     public void PlayerInteract(float pickStrength)
     {
-        print("click");
-        if (IsTouch && DoorOpen)
+        if (DoorOpen)
         {
             //ShowUI to chose - tbc;
             GameManager.instance.NextLevel();
-        }  
+        }
+        else
+        { 
+            //Show Is OpenUI
+        }
     }
 }

@@ -62,9 +62,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Click)
         {
-            RaycastHit2D Hitinfo = Physics2D.Raycast(CheckPoint.transform.position, CheckPoint.transform.right, 1f);
+            RaycastHit2D Hitinfo = Physics2D.Raycast(CheckPoint.transform.position, CheckPoint.transform.right, 0.5f);
             #if UNITY_EDITOR
-            Debug.DrawRay(CheckPoint.transform.position, CheckPoint.transform.right * 2, Color.red, 10f);
+            Debug.DrawRay(CheckPoint.transform.position, CheckPoint.transform.right * 2, Color.red, 0.5f);
             #endif
 
             if (Hitinfo.collider != null)
@@ -79,9 +79,10 @@ public class PlayerController : MonoBehaviour
                             Player.Instance.UseOxygen();
                             item.PlayerInteract(Player.Instance.Strength);
                             break;
-                        case "Door":
+                        case "Item":
                             item.PlayerInteract(Player.Instance.Strength);
                             break;
+                       
                     }
                    
                 }

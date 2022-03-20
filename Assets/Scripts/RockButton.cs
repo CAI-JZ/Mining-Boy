@@ -8,22 +8,26 @@ public class RockButton : MonoBehaviour, Inf_Interact
     private int Function;
     // 1 = START GAME;
     // 2 = END GAME;
+    private bool isTouch;
 
     [SerializeField]
     private CanvasGroup ButtonName;
 
     public void PlayerInteract(float pickStrength)
     {
-        switch (Function)
+        if (isTouch)
         {
-            case 0: //start game;
-                print("ToL1");
-                GameManager.instance.GameStart();
-                break;
-            case 1:
-                print("EndGme");
-                Application.Quit();
-                break;
+            switch (Function)
+            {
+                case 0: //start game;
+                    print("ToL1");
+                    GameManager.instance.GameStart();
+                    break;
+                case 1:
+                    print("EndGme");
+                    Application.Quit();
+                    break;
+            }
         }
     }
 
@@ -31,7 +35,8 @@ public class RockButton : MonoBehaviour, Inf_Interact
     {
         if (collision.tag == "Player")
         {
-            ButtonName.alpha = 1; 
+            ButtonName.alpha = 1;
+            isTouch = true;
         }
     }
 
@@ -40,6 +45,7 @@ public class RockButton : MonoBehaviour, Inf_Interact
         if (collision.tag == "Player")
         {
             ButtonName.alpha = 0;
+            isTouch = false;
         }
     }
 }

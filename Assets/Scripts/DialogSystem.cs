@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogSystem : MonoBehaviour
+public class DialogSystem : MonoBehaviour,Inf_Interact
 {
     [SerializeField]
     private AdvancedText text;
@@ -40,30 +40,19 @@ public class DialogSystem : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void PlayerInteract(float pickStrength)
     {
-        
-    }
-
-    private void Update()
-    {
-        bool talk = Input.GetKeyDown(KeyCode.F);
-
-
-        if (!text.transform.parent.gameObject.activeSelf && talk)
+        if (!text.transform.parent.gameObject.activeSelf)
         {
             text.transform.parent.gameObject.SetActive(true);
         }
-        if (talk && index == DialogList.Count)
+        if (index == DialogList.Count)
         {
             text.transform.parent.gameObject.SetActive(false);
             index = 0;
             return;
         }
-        if (talk)
-        {
-            text.ShowTextByTyping(DialogList[index]);
-            index++;
-        }
+        text.ShowTextByTyping(DialogList[index]);
+        index++;
     }
 }

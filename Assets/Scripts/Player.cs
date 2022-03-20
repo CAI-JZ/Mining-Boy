@@ -11,8 +11,10 @@ public class Player : MonoBehaviour
     // player basic data
     public float CurrentOxygen;
     [SerializeField] 
-    public float MaxOxygen;
+    private float MaxOxygen;
     private float OxygenCost;
+
+    public float _MayOxygen => MaxOxygen;
          
     public float Money { get; private set; }
 
@@ -23,17 +25,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Light View;
 
-
     private float PickStength = 3;
     public int PickLevel { get; private set; }
     public float Strength => PickStength;
-
+    [SerializeField]
+    private int ViewLevel;
+    public int view => ViewLevel;
 
 
     [Header("¡¾Test¡¿")]
     [SerializeField]
-    private int Viel;
-
+    private int viewLevel;
 
     private void Awake()
     {
@@ -52,13 +54,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        UpdateViewFiled(Viel);
-       
+        #if UNITY_EDITOR
+        UpdateViewFiled(viewLevel);
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            UpdatePick(0);
+        }
+        #endif
     }
-
-
-
-
 
 
     // Add oxy cost when get deeper cave;
@@ -66,29 +69,26 @@ public class Player : MonoBehaviour
     {
         OxygenCost = Mathf.Pow(Layer, 2);
     }
+
     public void MoneyUpdate(float Incoming)
     {
-        print(Incoming);
-        Money = Money + Incoming;
-        //print(Money);
+        Money = Money + Incoming; 
     }
 
-    void PickUpdate()
+    public void UpdatePick(float cost)
     {
-        if (PickLevel < Picks.Length-1)
-        {
             Picks[PickLevel].SetActive(false);
             PickLevel = PickLevel + 1;
             Picks[PickLevel].SetActive(true);
-            print(PickLevel);
-            PickStength += 5;
-        }
-        else
-        {
-            print("Can not update anymore");
-        }
-    } 
+            PickStength = 3 + 3 * PickLevel;
+            Money -= cost;
+    }
 
+    public bool CanUpgradePick()
+    {
+        bool can = PickLevel < Picks.Length - 1;
+        return can;
+    }
 
     public void updateOxygen(float newOxy)
     {
@@ -103,14 +103,17 @@ public class Player : MonoBehaviour
             case 1:
                 View.range = 5;
                 View.intensity = 5;
+                ViewLevel = lightLevel;
                 break;
             case 2:
                 View.range = 10;
                 View.intensity = 2.5f;
+                ViewLevel = lightLevel;
                 break;
             case 3:
                 View.range = 20;
                 View.intensity = 1.7f;
+                ViewLevel = lightLevel;
                 break;
         }
     }

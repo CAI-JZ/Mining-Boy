@@ -2,49 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+public class Shop : MonoBehaviour,Inf_Interact
 {
     private float OxygenCost;
     private float PickCost;
     private float ViewCost;
     private float item01Cost;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void PlayerInteract(float pickStrength)
     {
-        if (collision.collider.tag == "Player")
-        { 
-            //show UI
-        }
-    }
-
-    void UpadatePick()
-    { 
-    
-    }
-
-    void UpdateViewFiled()
-    { 
-    
-    }
-
-    void UpdateOxygenValue()
-    { 
-    
-    }
-
-   
-
-    void BuyOxygen()
-    {
-        if (OxygenCost <= Player.Instance.Money)
+        bool canUpgrade = Player.Instance.CanUpgradePick();
+        print(canUpgrade);
+        if (canUpgrade)
         {
-            Player.Instance.AddOxygen(40, OxygenCost);
+            UIManager.Instance.ShowUpdatePick();
         }
-        CostUpdate(OxygenCost,1.5f);
-    }
-
-    void CostUpdate(float cost, float parameter)
-    {
-        cost *= parameter;
+        else
+        {
+            UIManager.Instance.ShowTip("The PICK is on Max Level");
+        }
     }
 }

@@ -12,15 +12,18 @@ public class RockManager : MonoBehaviour, Inf_Interact
     private int RockLevel;
 
     //RockChoose
+  
     [SerializeField]
     private Rock[] Rocks;
     private Rock CurrentRock;
+
+    [Header("-> Rock Set")]
     [SerializeField]
     private bool UseRandom = true;
     [SerializeField]
     private Rock UseRock;
     
-    //UI
+    [Header("-> UI")]
     [SerializeField]
     private Slider RockDur;
     [SerializeField]
@@ -103,12 +106,12 @@ public class RockManager : MonoBehaviour, Inf_Interact
             switch (sf)
             {
                 case "ADD_OXYGEN":
-                    print("Player current max oxygen " + Player.Instance.MaxOxygen +" []" + "Player current oxygen" + Player.Instance.CurrentOxygen);
+                    print("Player current max oxygen " + Player.Instance._MayOxygen + " []" + "Player current oxygen" + Player.Instance.CurrentOxygen);
                     Player.Instance.AddOxygen(CurrentRock.FeatureValue,0);
-                    print("Player max oxygen" + Player.Instance.MaxOxygen);
+                    print("Player max oxygen" + Player.Instance._MayOxygen);
                     break;
                 default:
-                    print("No Skill");
+                    //print("No Skill");
                     break;
 
             }
