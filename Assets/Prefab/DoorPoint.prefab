@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorOpen: 0
+  Cost: 1000
 --- !u!61 &9063495249199064728
 BoxCollider2D:
   m_ObjectHideFlags: 0

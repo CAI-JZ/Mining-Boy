@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Rock
   - Item
+  - Btn
+  - UI
   layers:
   - Default
   - TransparentFX

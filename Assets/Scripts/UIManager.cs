@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
         }
 
         canvas = GetComponent<Canvas>();
+
     }
 
     public void GameStart()

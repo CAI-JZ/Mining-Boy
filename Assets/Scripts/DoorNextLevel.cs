@@ -5,8 +5,9 @@ using UnityEngine;
 public class DoorNextLevel : MonoBehaviour,Inf_Interact
 {
     [SerializeField]
-    bool DoorOpen;
-
+    public bool DoorOpen;
+    [SerializeField]
+    public float Cost;
 
     private void OnEnable()
     {
@@ -16,10 +17,19 @@ public class DoorNextLevel : MonoBehaviour,Inf_Interact
 
     public void OpenDoor()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(true);
-        DoorOpen = true;
-        UIManager.Instance.ShowTip("Door is open");
+        if (!DoorOpen)
+        {
+            float money = Player.Instance.Money - Cost;
+            if (money >= 0)
+            {
+                DoorOpen = true;
+                Player.Instance.MoneyUpdate(-Cost);
+                //UIManager.Instance.ShowTip("Door is open");
+                transform.GetChild(1).gameObject.SetActive(true);
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+        else { print("Door 的默认值是true"); }
     }
 
 
@@ -29,10 +39,6 @@ public class DoorNextLevel : MonoBehaviour,Inf_Interact
         {
             //ShowUI to chose - tbc;
             GameManager.instance.NextLevel();
-        }
-        else
-        { 
-            //Show Is OpenUI
         }
     }
 }

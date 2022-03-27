@@ -10,12 +10,12 @@ public class Player : MonoBehaviour
 
     // player basic data
     public float CurrentOxygen;
-    [SerializeField] 
+    [SerializeField]
     private float MaxOxygen;
     private float OxygenCost;
 
     public float _MayOxygen => MaxOxygen;
-         
+
     public float Money { get; private set; }
 
     [Header("【Object】")]
@@ -49,39 +49,39 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Money = 0;    
+        Money = 0;
     }
 
     private void Update()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UpdateViewFiled(viewLevel);
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             UpdatePick(0);
         }
-        #endif
+#endif
     }
 
 
     // Add oxy cost when get deeper cave;
     public void UpdateOxyCost(float Layer)
     {
-        OxygenCost = Mathf.Pow(Layer, 2);
+        OxygenCost = Mathf.Pow(Layer, 2)/2;
     }
 
     public void MoneyUpdate(float Incoming)
     {
-        Money = Money + Incoming; 
+        Money = Money + Incoming;
     }
 
     public void UpdatePick(float cost)
     {
-            Picks[PickLevel].SetActive(false);
-            PickLevel = PickLevel + 1;
-            Picks[PickLevel].SetActive(true);
-            PickStength = 3 + 3 * PickLevel;
-            Money -= cost;
+        Picks[PickLevel].SetActive(false);
+        PickLevel = PickLevel + 1;
+        Picks[PickLevel].SetActive(true);
+        PickStength = 3 + 3 * PickLevel;
+        Money -= cost;
     }
 
     public bool CanUpgradePick()
@@ -93,7 +93,16 @@ public class Player : MonoBehaviour
     public void updateOxygen(float newOxy)
     {
         MaxOxygen = newOxy;
-        CurrentOxygen = MaxOxygen;
+        StartCoroutine(CurOxyNumberUpdate(MaxOxygen));
+    }
+
+    IEnumerator CurOxyNumberUpdate(float targetOxy)
+    {
+        while (CurrentOxygen < targetOxy)
+        {
+            CurrentOxygen += Time.deltaTime * 500;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
     }
 
     public void UpdateViewFiled(int lightLevel)
@@ -118,6 +127,29 @@ public class Player : MonoBehaviour
         }
     }
 
+    void ChangeViewLightColor(int Level)
+    {
+        switch (Level)
+        {
+            case 1:
+                //暖色黄光
+                return;
+            case 2:
+                //暖色黄光
+                return;
+            case 3:
+                //暖色黄光
+                return;
+            case 4:
+                //暖色黄光
+                return;
+            case 5:
+                //暖色黄光
+                return;
+        }
+        
+    }
+
 
     public void UseOxygen()
     {
@@ -127,8 +159,8 @@ public class Player : MonoBehaviour
             CurrentOxygen = oxy;
         }
         else
-        { 
-            //game over;
+        {
+            Debug.LogWarning("Game Over");
         }
          
     }
@@ -138,11 +170,11 @@ public class Player : MonoBehaviour
         float Oxy = CurrentOxygen + Oxygen;
         if (Oxy < MaxOxygen)
         {
-            CurrentOxygen = Oxy;
+            StartCoroutine(CurOxyNumberUpdate(Oxy));
         }
         else 
         {
-            CurrentOxygen = MaxOxygen;
+            StartCoroutine(CurOxyNumberUpdate(MaxOxygen));
         }
         Money -= cost;
     }
