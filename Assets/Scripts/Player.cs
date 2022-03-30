@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,10 +33,11 @@ public class Player : MonoBehaviour
     private int ViewLevel;
     public int view => ViewLevel;
 
-
     [Header("¡¾Test¡¿")]
     [SerializeField]
     private int viewLevel;
+
+    public event Action<GameObject> PickUpdate;
 
     private void Awake()
     {
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour
         Picks[PickLevel].SetActive(true);
         PickStength = 3 + 3 * PickLevel;
         Money -= cost;
+        PickUpdate?.Invoke(Picks[PickLevel]);
     }
 
     public bool CanUpgradePick()

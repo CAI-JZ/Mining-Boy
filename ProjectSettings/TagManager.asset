@@ -51,14 +51,14 @@ TagManager:
   - name: Rock
     uniqueID: 2011907045
     locked: 0
-  - name: Pick
-    uniqueID: 3654870833
-    locked: 0
   - name: Wall
     uniqueID: 2087476737
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Pick
+    uniqueID: 3654870833
     locked: 0
   - name: Dec
     uniqueID: 2615498083

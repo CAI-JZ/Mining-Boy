@@ -2077,6 +2077,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7012920170920205940, guid: c5704b0b2783da04eb520d1a1af97596, type: 3}
+      propertyPath: LightLevel
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5704b0b2783da04eb520d1a1af97596, type: 3}
 --- !u!1001 &167277928
@@ -24255,6 +24259,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 958957473274846526, guid: fdbe0ecca59cf6f44979821737f6072c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2600787437771359944, guid: fdbe0ecca59cf6f44979821737f6072c, type: 3}
       propertyPath: m_Name
       value: RockAddOxy
