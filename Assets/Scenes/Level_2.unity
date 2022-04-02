@@ -820,8 +820,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2006745165}
     - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
+      propertyPath: TextFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 815be413f736cfd4ea6ec6dc67f11c02, type: 3}
+    - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: FirstTalk
-      value: Hello
+      value: Pay the money, you can't open the door without money.
       objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898241, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_Name
@@ -833,11 +837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898242, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.91
+      value: -5.03
       objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898242, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.09
+      value: 10.14
       objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898242, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4871,7 +4875,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1177020619
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 89a17b1065c1978449f1ba4630c145ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6970,7 +6974,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -674523493853988139, guid: 929d7afd0fb81e648a5abaa9c165305b, type: 3}
       propertyPath: Cost
-      value: 100
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5731752258127652316, guid: 929d7afd0fb81e648a5abaa9c165305b, type: 3}
       propertyPath: m_RootOrder
@@ -6982,7 +6986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5731752258127652316, guid: 929d7afd0fb81e648a5abaa9c165305b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.89
+      value: 7.11
       objectReference: {fileID: 0}
     - target: {fileID: 5731752258127652316, guid: 929d7afd0fb81e648a5abaa9c165305b, type: 3}
       propertyPath: m_LocalPosition.z
