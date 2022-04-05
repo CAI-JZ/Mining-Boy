@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
 
     public Animator PickAnim;
 
-
     private void Awake()
     {
         m_Rigid = GetComponent<Rigidbody2D>();
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
     void Move(float x, float y)
     {
         Flip(x);
-        m_Rigid.MovePosition(new Vector2(transform.position.x + x * Speed * Time.deltaTime, transform.position.y + y * Speed * Time.deltaTime));  
+        m_Rigid.MovePosition(new Vector2(transform.position.x + x * Speed * Time.deltaTime, transform.position.y + y * Speed * Time.deltaTime));
     }
 
     void Animation(float x, float y)

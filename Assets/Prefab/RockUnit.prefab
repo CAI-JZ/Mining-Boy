@@ -89,6 +89,36 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2200844729769514903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4264610628208594550}
+  m_Layer: 0
+  m_Name: CoinPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4264610628208594550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200844729769514903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3585262455788992624}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3448839497264563102
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654159205679122887}
+  - {fileID: 4264610628208594550}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -336,12 +367,12 @@ MonoBehaviour:
   Rocks:
   - {fileID: 11400000, guid: 00d60e2cc6db52e42a59ed09867d4696, type: 2}
   - {fileID: 11400000, guid: a6cf27f836e5d2d40bda1fcbfbce9f07, type: 2}
-  - {fileID: 11400000, guid: 467529d64d4c8054bb4b5a81874525da, type: 2}
-  - {fileID: 11400000, guid: 64364828ca014c34d889da12850a8721, type: 2}
   - {fileID: 11400000, guid: 934f99c1594f92045adb45182ce27c43, type: 2}
   - {fileID: 11400000, guid: a0b0c6f31087c424bb2653454fe6959e, type: 2}
   - {fileID: 11400000, guid: 77a95b10388f46c42841c64f6596544b, type: 2}
   - {fileID: 11400000, guid: 5246ccffe5322c042bf3ae760b4ea1bf, type: 2}
+  - {fileID: 11400000, guid: 467529d64d4c8054bb4b5a81874525da, type: 2}
+  - {fileID: 11400000, guid: 64364828ca014c34d889da12850a8721, type: 2}
   - {fileID: 11400000, guid: 01035c4c9aa9db944867d405f19f2744, type: 2}
   - {fileID: 11400000, guid: 3d2a2c91491d6de43b76c0611d7ba247, type: 2}
   - {fileID: 11400000, guid: 97ae7e45c1795c246bf9a62c7ffe1bf3, type: 2}
@@ -351,6 +382,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 051ce2d653b563049882406df8409752, type: 2}
   - {fileID: 11400000, guid: 2bbc2267ef4e7f54d8f52b5a33189cff, type: 2}
   - {fileID: 11400000, guid: 7948b7670c3355249bbe4c08dcd85f06, type: 2}
+  CoinPrefab: {fileID: 6756558502870830122, guid: 17fca10226aebfc4a9ce59fcbab84265, type: 3}
+  CoinPos: {fileID: 4264610628208594550}
+  UseRandom: 1
+  UseRock: {fileID: 0}
   RockDur: {fileID: 272836770412224877}
   DurBar: {fileID: 71907908}
 --- !u!212 &1277818774471599046
@@ -391,7 +426,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2011907045
-  m_SortingLayer: -4
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

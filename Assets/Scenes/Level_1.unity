@@ -2089,7 +2089,7 @@ PrefabInstance:
     - target: {fileID: 1912966574, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
       propertyPath: UseRock
       value: 
-      objectReference: {fileID: 11400000, guid: a6cf27f836e5d2d40bda1fcbfbce9f07, type: 2}
+      objectReference: {fileID: 11400000, guid: 934f99c1594f92045adb45182ce27c43, type: 2}
     - target: {fileID: 1912966574, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
       propertyPath: UseRandom
       value: 0
@@ -3970,6 +3970,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
   m_PrefabInstance: {fileID: 1098837708}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1113138976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1912966574, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: UseRock
+      value: 
+      objectReference: {fileID: 11400000, guid: a6cf27f836e5d2d40bda1fcbfbce9f07, type: 2}
+    - target: {fileID: 1912966574, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: UseRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316911337680997966, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316911337680997966, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992624, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585262455788992627, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
+      propertyPath: m_Name
+      value: RockUnit (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76a25b91a8786f94e9c8a8a85248df1a, type: 3}
 --- !u!1001 &1118314389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4262,7 +4335,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -674523493853988139, guid: 929d7afd0fb81e648a5abaa9c165305b, type: 3}
       propertyPath: Cost
-      value: 300
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5731752258127652316, guid: 929d7afd0fb81e648a5abaa9c165305b, type: 3}
       propertyPath: m_RootOrder
@@ -7579,7 +7652,7 @@ PrefabInstance:
       objectReference: {fileID: 4900000, guid: 835c706c0ba9e2244a8a6e9afbed2662, type: 3}
     - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: FirstTalk
-      value: If you want to go to the cave,  <color=#D49100>300</color> coins please.
+      value: If you want to go to the cave,  <color=#D49100>200</color> coins please.
       objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898241, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_Name

@@ -12,10 +12,15 @@ public class RockManager : MonoBehaviour, Inf_Interact
     private int RockLevel;
 
     //RockChoose
-  
+
+    [Header("Rock Data")]
     [SerializeField]
     private Rock[] Rocks;
     private Rock CurrentRock;
+    [SerializeField]
+    private GameObject CoinPrefab;
+    [SerializeField]
+    private Transform CoinPos;
 
     [Header("-> Rock Set")]
     [SerializeField]
@@ -90,31 +95,21 @@ public class RockManager : MonoBehaviour, Inf_Interact
             CurrentDurability -= pickStrength;
             if (CurrentDurability <= 0)
             {
-            FinishPick();
-            gameObject.SetActive(false);
+                if (Value > 0)
+                { 
+                    FinishPick();
+                    GameObject coin = GameObject.Instantiate(CoinPrefab, CoinPos.position, Quaternion.identity);
+                }
+                Destroy(gameObject);
             }
         }
     }
 
     private void FinishPick()
     {
-        string sf = CurrentRock.SpiecalFeature;
         if (Player.Instance != null)
         {
             Player.Instance.MoneyUpdate(Value);
-
-            switch (sf)
-            {
-                case "ADD_OXYGEN":
-                    print("Player current max oxygen " + Player.Instance._MayOxygen + " []" + "Player current oxygen" + Player.Instance.CurrentOxygen);
-                    Player.Instance.AddOxygen(CurrentRock.FeatureValue,0);
-                    print("Player max oxygen" + Player.Instance._MayOxygen);
-                    break;
-                default:
-                    //print("No Skill");
-                    break;
-
-            }
         }
     }
 
