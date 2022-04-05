@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Click)
         {
-            PickAnim.SetTrigger("Pick");
+            //PickAnim.SetTrigger("Pick");
             RaycastHit2D Hitinfo = Physics2D.Raycast(CheckPoint.transform.position, CheckPoint.transform.right, 0.5f);
             #if UNITY_EDITOR
             Debug.DrawRay(CheckPoint.transform.position, CheckPoint.transform.right * 2, Color.red, 0.5f);
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
                     switch (Hitinfo.collider.tag)
                     {
                         case "Rock":
-                            
+                            PickAnim.SetTrigger("Pick");
                             Player.Instance.UseOxygen();
                             item.PlayerInteract(Player.Instance.Strength);
                             
