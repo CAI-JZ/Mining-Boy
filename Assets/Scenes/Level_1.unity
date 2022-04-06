@@ -7703,14 +7703,6 @@ PrefabInstance:
       propertyPath: Door
       value: 
       objectReference: {fileID: 1149930045}
-    - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
-      propertyPath: TextFile
-      value: 
-      objectReference: {fileID: 4900000, guid: 835c706c0ba9e2244a8a6e9afbed2662, type: 3}
-    - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
-      propertyPath: FirstTalk
-      value: If you want to go to the cave,  <color=#D49100>200</color> coins please.
-      objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898241, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_Name
       value: Npc

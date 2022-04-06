@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3596567140567381833}
   - component: {fileID: 3596567140567381832}
   - component: {fileID: 8445650850938933929}
+  - component: {fileID: 73537975}
   m_Layer: 0
   m_Name: Oxygen
   m_TagString: Item
@@ -53,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 36180b2b75ae2ec479ba5101a89063a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2052129504000218305, guid: 81f55619639fa2d48a3252e70ff2ee16, type: 3}
+  m_Sprite: {fileID: 7660591184108137204, guid: e6ac4546c8e3a954c9f7f89aaaecb19e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,6 +125,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &73537975
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596567140567381839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7992c61c0bc6b74a9069f3fff4d629a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4404697157888940903
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,9 +186,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.8718138, b: 1, a: 1}
-  m_Intensity: 4
-  m_Range: 6
+  m_Color: {r: 0.47843137, g: 0.91764706, b: 0.9607843, a: 1}
+  m_Intensity: 2.5
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

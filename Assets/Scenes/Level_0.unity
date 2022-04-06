@@ -1570,7 +1570,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1039562024
 CanvasGroup:
@@ -1752,14 +1752,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6291762400088561505, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6291762400099010134, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
-      propertyPath: coin
+      propertyPath: Footpoint
       value: 
-      objectReference: {fileID: 6756558502870830122, guid: 17fca10226aebfc4a9ce59fcbab84265, type: 3}
+      objectReference: {fileID: 1928074887}
     - target: {fileID: 6291762400099010137, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
       propertyPath: m_Name
       value: Character
@@ -1806,6 +1802,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6291762400099010138, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384080888590645506, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384080888590645506, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
+      propertyPath: m_Volume
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384080888590645506, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5da9997abae92874d976932055c8634c, type: 3}
+    - target: {fileID: 8384080888590645506, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1874,7 +1886,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2031,7 +2043,7 @@ SpriteRenderer:
   m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 89a17b1065c1978449f1ba4630c145ab, type: 3}
-  m_Color: {r: 0.03773582, g: 0.023225466, b: 0.009789954, a: 1}
+  m_Color: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2543,7 +2555,7 @@ GameObject:
   - component: {fileID: 1841161513}
   m_Layer: 0
   m_Name: StartGame
-  m_TagString: Rock
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2893,6 +2905,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b5b9cd354e8ff40858b77c65afcaad, type: 3}
+--- !u!82 &1928074887 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8384080888590645506, guid: ed0b6babd46f5664aad9a9a05add1c0b, type: 3}
+  m_PrefabInstance: {fileID: 1200871297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1943457106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3516,10 +3533,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6277626713028350871, guid: 79ed71b6c9b4a644c847222ab986f1e9, type: 3}
-      propertyPath: m_Name
-      value: Tip
-      objectReference: {fileID: 0}
     - target: {fileID: 6810755813627323514, guid: 79ed71b6c9b4a644c847222ab986f1e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3554,7 +3567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6810755813627323514, guid: 79ed71b6c9b4a644c847222ab986f1e9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 180
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6810755813627323514, guid: 79ed71b6c9b4a644c847222ab986f1e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3590,7 +3603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6810755813627323514, guid: 79ed71b6c9b4a644c847222ab986f1e9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 130
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6810755813627323514, guid: 79ed71b6c9b4a644c847222ab986f1e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

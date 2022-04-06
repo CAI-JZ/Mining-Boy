@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9044600247280898242}
+  - component: {fileID: 26160964014934228}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -32,6 +33,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &26160964014934228
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9044600247280898241}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 36180b2b75ae2ec479ba5101a89063a3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1189681268827845177, guid: 3a8489555c10a85489fa2140e7a1266a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.1875, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &9044600247461514027
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +126,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9150943, g: 0.46690372, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.80070823, b: 0.6273585, a: 1}
   m_Intensity: 1
   m_Range: 13.03
   m_SpotAngle: 30
@@ -132,6 +184,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9044600247280898242}
     m_Modifications:
+    - target: {fileID: 9129418847992593392, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+      propertyPath: TextFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 835c706c0ba9e2244a8a6e9afbed2662, type: 3}
+    - target: {fileID: 9129418847992593392, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+      propertyPath: FirstTalk
+      value: If you want to go to the cave,  <color=#D49100>200</color> coins please.
+      objectReference: {fileID: 0}
     - target: {fileID: 9129418847992593393, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
       propertyPath: m_Name
       value: DialogManager
@@ -180,7 +240,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9129418847992593405, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
 --- !u!4 &8854381712783010372 stripped
 Transform:

@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
     [SerializeField] private float Speed;
     [SerializeField] private float StopTime;
     [SerializeField] private float FadeSpeed;
+    [SerializeField] AudioSource CoinStart;
 
     private Rigidbody2D _Rigidbody;
     private SpriteRenderer _Sprite;
@@ -17,7 +18,7 @@ public class Coin : MonoBehaviour
         _Sprite = GetComponent<SpriteRenderer>();
 
         _Rigidbody.velocity = Vector2.up * Speed;
-
+        CoinStart.Play();
         StartCoroutine(Stop());
     }
 

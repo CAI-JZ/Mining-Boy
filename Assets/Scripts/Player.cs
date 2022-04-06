@@ -77,6 +77,13 @@ public class Player : MonoBehaviour
         Money = Money + Incoming;
     }
 
+    public void GetNewPick(int pickLevel)
+    {
+        Picks[PickLevel].SetActive(false);
+        Picks[pickLevel].SetActive(true);
+        PickLevel = pickLevel;
+    }
+
     public void UpdatePick(float cost)
     {
         Picks[PickLevel].SetActive(false);

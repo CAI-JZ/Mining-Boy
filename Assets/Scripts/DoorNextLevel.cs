@@ -8,6 +8,8 @@ public class DoorNextLevel : MonoBehaviour,Inf_Interact
     public bool DoorOpen;
     [SerializeField]
     public float Cost;
+    [SerializeField]
+    AudioSource openDoor;
 
     private void OnEnable()
     {
@@ -23,6 +25,7 @@ public class DoorNextLevel : MonoBehaviour,Inf_Interact
             if (money >= 0)
             {
                 DoorOpen = true;
+                openDoor.Play();
                 Player.Instance.MoneyUpdate(-Cost);
                 //UIManager.Instance.ShowTip("Door is open");
                 transform.GetChild(1).gameObject.SetActive(true);

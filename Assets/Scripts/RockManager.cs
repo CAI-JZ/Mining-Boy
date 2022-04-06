@@ -34,6 +34,9 @@ public class RockManager : MonoBehaviour, Inf_Interact
     [SerializeField]
     private CanvasGroup DurBar;
 
+    [SerializeField]
+    AudioSource HitRock;
+
     private void Awake()
     {
         if (UseRandom)
@@ -86,6 +89,7 @@ public class RockManager : MonoBehaviour, Inf_Interact
    
     public void PlayerInteract(float pickStrength)
     {
+        HitRock.Play();
         if (CurrentDurability == MaxDurability)
         {
             DurBar.alpha = 1;
@@ -98,12 +102,13 @@ public class RockManager : MonoBehaviour, Inf_Interact
                 if (Value > 0)
                 { 
                     FinishPick();
-                    GameObject coin = GameObject.Instantiate(CoinPrefab, CoinPos.position, Quaternion.identity);
+                    Instantiate(CoinPrefab, CoinPos.position, Quaternion.identity);
                 }
                 Destroy(gameObject);
             }
         }
     }
+
 
     private void FinishPick()
     {

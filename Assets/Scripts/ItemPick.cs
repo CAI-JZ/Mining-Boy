@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itemLight : MonoBehaviour,Inf_Interact
+public class ItemPick : MonoBehaviour, Inf_Interact
 {
     [SerializeField]
-    public int LightLevel;
+    int PickLevel;
     private bool IsOpen = false;
     private Animator _Animator;
     [SerializeField]
     GameObject _light;
-    [SerializeField]
-    AudioSource OpenChest;
 
     private void Awake()
     {
@@ -21,31 +19,29 @@ public class itemLight : MonoBehaviour,Inf_Interact
 
     public void PlayerInteract(float pickStrength)
     {
-        int level = Player.Instance.view;
+
         if (!IsOpen)
-        { 
-            if (LightLevel > level)
+        {
+            _Animator.SetTrigger("Open");
+            if (PickLevel > Player.Instance.PickLevel)
             {
-                _Animator.SetTrigger("Open");
-                OpenChest.Play();
-                StartCoroutine(PlayerNewLight());
-                IsOpen = true;
+                StartCoroutine(PlayerNewPick());
             }
             else
             {
-                UIManager.Instance.ShowTip("You have better light");
+                UIManager.Instance.ShowTip("Got a new pick");
             }
+            IsOpen = true;
         }
-       
+
     }
 
-    IEnumerator PlayerNewLight()
+    IEnumerator PlayerNewPick()
     {
         yield return new WaitForSecondsRealtime(0.5f);
-        Player.Instance.UpdateViewFiled(LightLevel);
-        UIManager.Instance.ShowTip("New light is equiped...");
+        Player.Instance.GetNewPick(PickLevel);
+        UIManager.Instance.ShowTip("New Pick is equiped...");
         _light.SetActive(false);
 
     }
-
 }

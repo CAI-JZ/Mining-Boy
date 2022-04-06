@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     float FlipX = 1;
 
     public Animator PickAnim;
+    public AudioSource Footpoint;
+    bool IsMove;
 
     private void Awake()
     {
@@ -44,6 +46,9 @@ public class PlayerController : MonoBehaviour
     {
         MoveUp = Input.GetAxisRaw("Vertical");
         MoveRight = Input.GetAxisRaw("Horizontal");
+        bool upInput = !Mathf.Approximately(MoveUp, 0f);
+        bool rightInput = !Mathf.Approximately(MoveRight, 0f);
+        IsMove = upInput || rightInput;
 
         Vector2 MoveDir = new Vector2(-MoveUp,MoveRight);
         if (MoveDir != Vector2.zero)
@@ -56,18 +61,32 @@ public class PlayerController : MonoBehaviour
         IsHit = Input.GetKeyDown(KeyCode.Mouse0);
         Interact(IsHit);
         Animation(MoveRight, MoveUp);
+
+        
     }
 
     private void FixedUpdate()
     {
         Move(MoveRight, MoveUp);
+
+        if (IsMove)
+        {
+            if (!Footpoint.isPlaying)
+            {
+                Footpoint.Play();
+            }
+        }
+        else
+        {
+            Footpoint.Stop();
+        }
     }
 
     void Move(float x, float y)
     {
         Flip(x);
         m_Rigid.MovePosition(new Vector2(transform.position.x + x * Speed * Time.deltaTime, transform.position.y + y * Speed * Time.deltaTime));
-    }
+     }
 
     void Animation(float x, float y)
     {
