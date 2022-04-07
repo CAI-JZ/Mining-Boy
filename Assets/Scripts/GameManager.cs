@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,9 @@ public class GameManager : MonoBehaviour
     public float OxygenCost;
     [SerializeField]
     private GameObject UI;
-   
+
+    public event Action Retry;
+
     public static GameManager instance { get; private set; }
     private GameManager() { }
 
@@ -35,6 +38,19 @@ public class GameManager : MonoBehaviour
     {
         UI.SendMessage("GameStart");
         NextLevel();
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(6);
+        Retry?.Invoke();
+        Time.timeScale = 0;
+    }
+
+    public void RetryGame()
+    {
+        Player.Instance.PlayerReset();
+        SceneManager.LoadScene(0);
     }
 
     public void NextLevel()

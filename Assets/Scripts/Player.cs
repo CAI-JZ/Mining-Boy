@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     public event Action<GameObject> PickUpdate;
 
+
     private void Awake()
     {
         if (Instance == null)
@@ -82,6 +83,8 @@ public class Player : MonoBehaviour
         Picks[PickLevel].SetActive(false);
         Picks[pickLevel].SetActive(true);
         PickLevel = pickLevel;
+        PickStength = 3 + 3 * PickLevel;
+        PickUpdate?.Invoke(Picks[PickLevel]);
     }
 
     public void UpdatePick(float cost)
@@ -120,18 +123,18 @@ public class Player : MonoBehaviour
         switch (lightLevel)
         {
             case 1:
-                View.range = 5;
+                View.range = 4;
                 View.intensity = 5;
                 ViewLevel = lightLevel;
                 break;
             case 2:
-                View.range = 10;
-                View.intensity = 2.5f;
+                View.range = 5.5f;
+                View.intensity = 5f;
                 ViewLevel = lightLevel;
                 break;
             case 3:
-                View.range = 20;
-                View.intensity = 1.7f;
+                View.range = 12;
+                View.intensity = 3f;
                 ViewLevel = lightLevel;
                 break;
         }
@@ -170,7 +173,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Game Over");
+            GameManager.instance.GameOver();
         }
          
     }
@@ -187,5 +190,14 @@ public class Player : MonoBehaviour
             StartCoroutine(CurOxyNumberUpdate(MaxOxygen));
         }
         Money -= cost;
+    }
+
+    public void PlayerReset()
+    {
+        MaxOxygen = 100;
+        CurrentOxygen = MaxOxygen;
+        UpdateViewFiled(0);
+        GetNewPick(0);
+        Money = 0;
     }
 }

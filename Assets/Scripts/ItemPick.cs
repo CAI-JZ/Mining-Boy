@@ -10,6 +10,9 @@ public class ItemPick : MonoBehaviour, Inf_Interact
     private Animator _Animator;
     [SerializeField]
     GameObject _light;
+    [SerializeField]
+    AudioSource OpenChest;
+
 
     private void Awake()
     {
@@ -23,6 +26,7 @@ public class ItemPick : MonoBehaviour, Inf_Interact
         if (!IsOpen)
         {
             _Animator.SetTrigger("Open");
+            OpenChest.Play();
             if (PickLevel > Player.Instance.PickLevel)
             {
                 StartCoroutine(PlayerNewPick());

@@ -30,11 +30,13 @@ public class PlayerController : MonoBehaviour
         Animator = GetComponent<Animator>();
         
         DontDestroyOnLoad(gameObject);
+        
     }
 
     private void Start()
     {
         Player.Instance.PickUpdate += NewPick;
+        GameManager.instance.Retry += WhenRetry;
     }
 
     private void NewPick(GameObject pick)
@@ -143,6 +145,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void WhenRetry()
+    {
+        print("Destory");
+        //Destroy(gameObject);
     }
 
 }

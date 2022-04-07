@@ -89,26 +89,34 @@ public class RockManager : MonoBehaviour, Inf_Interact
    
     public void PlayerInteract(float pickStrength)
     {
-        HitRock.Play();
-        if (CurrentDurability == MaxDurability)
+
+        if (CurrentDurability > 0)
         {
-            DurBar.alpha = 1;
-        }
-        if (RockLevel <= Player.Instance.PickLevel)
-        { 
-            CurrentDurability -= pickStrength;
-            if (CurrentDurability <= 0)
+            HitRock.Play();
+            if (CurrentDurability == MaxDurability)
             {
-                if (Value > 0)
-                { 
-                    FinishPick();
-                    Instantiate(CoinPrefab, CoinPos.position, Quaternion.identity);
+                DurBar.alpha = 1;
+            }
+            if (RockLevel <= Player.Instance.PickLevel)
+            {
+                CurrentDurability -= pickStrength;
+                if (CurrentDurability <= 0)
+                {
+                    if (Value > 0)
+                    {
+                        FinishPick();
+                        Instantiate(CoinPrefab, CoinPos.position, Quaternion.identity);
+                    }
+                    Invoke("Destory", 0.2f);
                 }
-                Destroy(gameObject);
             }
         }
     }
 
+    void Destory()
+    {
+        Destroy(gameObject);
+    }
 
     private void FinishPick()
     {

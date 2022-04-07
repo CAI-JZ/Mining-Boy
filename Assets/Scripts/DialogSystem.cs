@@ -32,8 +32,8 @@ public class DialogSystem : MonoBehaviour,Inf_Interact
     private void Awake()
     {
         GameObject UI = GameObject.FindGameObjectWithTag("UI");
-        Buttons = UI.transform.GetChild(3).gameObject;
-        DialogUI = UI.transform.GetChild(2).gameObject;
+        Buttons = UI.transform.GetChild(2).gameObject;
+        DialogUI = UI.transform.GetChild(1).gameObject;
         Button btnTalk = Buttons.transform.GetChild(0).GetComponent<Button>();
         Button btnOpenDoor = Buttons.transform.GetChild(1).GetComponent<Button>();
         Button btnLeave = Buttons.transform.GetChild(2).GetComponent<Button>();

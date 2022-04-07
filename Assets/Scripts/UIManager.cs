@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -33,7 +34,6 @@ public class UIManager : MonoBehaviour
         }
 
         canvas = GetComponent<Canvas>();
-
     }
 
     public void GameStart()
@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
     {
         Tips.gameObject.SetActive(true);
         Tips.transform.GetChild(0).gameObject.GetComponent<Text>().text = tip;
-        StartCoroutine(TipsShowCold(0.4f));
+        StartCoroutine(TipsShowCold(0.2f));
     }
 
     IEnumerator TipsShowCold( float coldTime)
@@ -81,4 +81,6 @@ public class UIManager : MonoBehaviour
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvas.worldCamera = UnityEngine.Camera.main;
     }
+
+ 
 }

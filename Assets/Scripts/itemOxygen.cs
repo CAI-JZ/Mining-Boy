@@ -9,6 +9,8 @@ public class itemOxygen : MonoBehaviour,Inf_Interact
     private bool IsOpen = false;
     private Animator _Animator;
     GameObject _light;
+    [SerializeField]
+    AudioSource OpenChest;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class itemOxygen : MonoBehaviour,Inf_Interact
             if (newOxy > Player.Instance._MayOxygen)
             {
                 _Animator.SetTrigger("Open");
+                OpenChest.Play();
                 StartCoroutine(PlayerAddOxy(newOxy));
                 IsOpen = true;
             }

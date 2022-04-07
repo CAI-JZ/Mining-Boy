@@ -16,8 +16,15 @@ public class Rock_Oxygen : MonoBehaviour, Inf_Interact
     float PickProcess;
     [SerializeField]
     float TotalValue;
+    [SerializeField]
+    AudioSource HitRock;
 
     bool isPick = false;
+
+    private void Awake()
+    {
+        DurBar.alpha = 0;
+    }
 
     private void FixedUpdate()
     {
@@ -36,10 +43,13 @@ public class Rock_Oxygen : MonoBehaviour, Inf_Interact
 
     public void PlayerInteract(float pickStrength)
     {
+
+        HitRock.Play();
         if (PickProcess <= 0)
         {
             DurBar.alpha = 1;
         }
+
         StartCoroutine(ProcessUpdate(4));
         isPick = true;
         if (PickProcess >= TotalValue)

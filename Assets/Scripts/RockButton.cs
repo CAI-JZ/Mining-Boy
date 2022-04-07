@@ -25,7 +25,11 @@ public class RockButton : MonoBehaviour, Inf_Interact
                     break;
                 case 1:
                     print("EndGme");
+                    #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                    #else
                     Application.Quit();
+                    #endif
                     break;
             }
         }
