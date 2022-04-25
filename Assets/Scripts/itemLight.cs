@@ -33,7 +33,7 @@ public class itemLight : MonoBehaviour,Inf_Interact
             }
             else
             {
-                UIManager.Instance.ShowTip("You have better light");
+                UIManager.Instance.ShowTip("You have better light",0.2f);
             }
         }
        
@@ -43,7 +43,7 @@ public class itemLight : MonoBehaviour,Inf_Interact
     {
         yield return new WaitForSecondsRealtime(0.5f);
         Player.Instance.UpdateViewFiled(LightLevel);
-        UIManager.Instance.ShowTip("New light is equiped...");
+        UIManager.Instance.ShowTip("New light is equiped...",0.2f);
         _light.SetActive(false);
 
     }

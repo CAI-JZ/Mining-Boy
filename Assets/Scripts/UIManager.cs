@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField]
-    private CanvasGroup Title;
+
     [SerializeField]
     private CanvasGroup CharacterUI;
     [SerializeField]
     private GameObject Tips;
     [SerializeField]
-    GameObject UpgradePick;
+    GameObject UIWin;
+    [SerializeField]
+    GameObject UIPause;
 
     bool TipsIsVisiable;
     Canvas canvas;
+    AudioSource audio;
 
     public static UIManager Instance { get; private set; }
     private UIManager() { }
@@ -34,21 +36,59 @@ public class UIManager : MonoBehaviour
         }
 
         canvas = GetComponent<Canvas>();
+        audio = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name != "Level_0")
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Pause();
+            }
+        }
+        
+    }
+
+    public void GameOver()
+    {
+        CharacterUI.gameObject.SetActive(false);
     }
 
     public void GameStart()
     {
-        Title.alpha = 0;
-        Title.gameObject.SetActive(false);
-        CharacterUI.gameObject.SetActive(true);
-        CharacterUI.alpha = 1;
+        if (!CharacterUI.gameObject.activeSelf)
+        {
+            CharacterUI.gameObject.SetActive(true);
+            CharacterUI.alpha = 1;
+        }
     }
 
-    public void ShowTip(string tip)
+    public void Win()
+    {
+        UIWin.SetActive(true);
+        //Time.timeScale = 0;
+    }
+
+    public void Pause()
+    {
+        UIPause.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        UIPause.SetActive(false);
+        Time.timeScale = 1;
+        audio.Play();
+    }
+    
+    public void ShowTip(string tip, float time)
     {
         Tips.gameObject.SetActive(true);
         Tips.transform.GetChild(0).gameObject.GetComponent<Text>().text = tip;
-        StartCoroutine(TipsShowCold(0.2f));
+        StartCoroutine(TipsShowCold(time));
     }
 
     IEnumerator TipsShowCold( float coldTime)
@@ -63,10 +103,6 @@ public class UIManager : MonoBehaviour
         TipsIsVisiable = false;
     }
 
-    public void ShowUpdatePick()
-    {
-        UpgradePick.gameObject.SetActive(true);
-    }
 
     private void FixedUpdate()
     {
@@ -82,5 +118,30 @@ public class UIManager : MonoBehaviour
         canvas.worldCamera = UnityEngine.Camera.main;
     }
 
- 
+
+    public void onbtnExit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    public void onbtnMenu()
+    {
+        if (UIWin.activeSelf)
+        { 
+            UIWin.SetActive(false);
+        }
+        if (UIPause.activeSelf)
+        {
+            UIPause.SetActive(false);
+        }
+        CharacterUI.gameObject.SetActive(false);
+        GameManager.instance.RetryGame();
+        audio.Play();
+        Time.timeScale = 1;
+    }
+
 }

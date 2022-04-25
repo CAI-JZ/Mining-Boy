@@ -36,6 +36,8 @@ public class RockManager : MonoBehaviour, Inf_Interact
 
     [SerializeField]
     AudioSource HitRock;
+    [SerializeField]
+    AudioSource HitWrong;
 
     private void Awake()
     {
@@ -92,13 +94,13 @@ public class RockManager : MonoBehaviour, Inf_Interact
 
         if (CurrentDurability > 0)
         {
-            HitRock.Play();
             if (CurrentDurability == MaxDurability)
             {
                 DurBar.alpha = 1;
             }
             if (RockLevel <= Player.Instance.PickLevel)
             {
+                HitRock.Play();
                 CurrentDurability -= pickStrength;
                 if (CurrentDurability <= 0)
                 {
@@ -109,6 +111,10 @@ public class RockManager : MonoBehaviour, Inf_Interact
                     }
                     Invoke("Destory", 0.2f);
                 }
+            }
+            else
+            {
+                HitWrong.Play();
             }
         }
     }

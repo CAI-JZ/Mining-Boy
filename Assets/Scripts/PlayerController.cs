@@ -23,25 +23,35 @@ public class PlayerController : MonoBehaviour
     public AudioSource Footpoint;
     bool IsMove;
 
+    [SerializeField]
+    GameObject[] Picks;
+    int currentPick;
+    int currentLight;
+    [SerializeField]
+    Light View;
+
     private void Awake()
     {
         m_Rigid = GetComponent<Rigidbody2D>();
         //Sprite = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
-        
-        DontDestroyOnLoad(gameObject);
-        
+
+        currentPick = Player.Instance.PickLevel;
+        currentLight = Player.Instance.view;
+        SetData(currentPick, currentLight); 
     }
 
     private void Start()
     {
-        Player.Instance.PickUpdate += NewPick;
+        Player.Instance.PickUpdate += updatePick;
+        Player.Instance.ViewUpdate += updateLight;
         GameManager.instance.Retry += WhenRetry;
     }
 
-    private void NewPick(GameObject pick)
+    private void OnDestroy()
     {
-        PickAnim = pick.GetComponent<Animator>();
+        Player.Instance.PickUpdate -= updatePick;
+        Player.Instance.ViewUpdate -= updateLight;
     }
 
     void Update()
@@ -84,6 +94,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //==================Update atmoic==================
+    //update Pick
+    void SetData(int pickIndex, int lightIndex)
+    {
+        Picks[pickIndex].SetActive(true);
+        PickAnim = Picks[pickIndex].GetComponent<Animator>();
+        updateLight(lightIndex);
+    }
+
+    void updatePick(int level)
+    {
+        Picks[level].SetActive(true);
+        Picks[currentPick].SetActive(false);
+        PickAnim = Picks[level].GetComponent<Animator>();
+        currentPick = level;
+    }
+
+    //update view
+    void updateLight(int lightLevel)
+    {
+        switch (lightLevel)
+        {
+            case 1:
+                View.range = 4;
+                View.intensity = 5;
+                break;
+            case 2:
+                View.range = 5.5f;
+                View.intensity = 5f;
+                break;
+            case 3:
+                View.range = 12;
+                View.intensity = 3f;
+                break;
+        }
+    }
+
+
+
+    //=================Move-===================
+
     void Move(float x, float y)
     {
         Flip(x);
@@ -96,10 +147,6 @@ public class PlayerController : MonoBehaviour
         Animator.SetFloat("PosX", Mathf.Abs(x));
     }
 
-    private void OnLevelWasLoaded(int level)
-    {
-        transform.position = GameObject.FindGameObjectWithTag("Respawn").transform.position;
-    }
 
     void Flip(float inputX)
     {
@@ -111,7 +158,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    //==================== Interact====================
     void Interact(bool Click)
     {
         if (Click)

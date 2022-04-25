@@ -52,7 +52,7 @@ public class UpgradePick : MonoBehaviour
     {
         if (CurrentMoney > CurrentCost)
         {
-            Player.Instance.UpdatePick(CurrentCost);
+            //Player.Instance.UpdatePick(CurrentCost);
             CloseTips();
         }
         else

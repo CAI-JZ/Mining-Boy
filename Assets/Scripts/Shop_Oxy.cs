@@ -12,9 +12,12 @@ public class Shop_Oxy : MonoBehaviour, Inf_Interact
     [SerializeField]
     Text ShowCost;
 
+    AudioSource useCoin;
+
     private void Awake()
     {
         ShowCost.text = Cost.ToString();
+        useCoin = GetComponent<AudioSource>();
     }
 
     public void PlayerInteract(float pickStrength)
@@ -26,16 +29,18 @@ public class Shop_Oxy : MonoBehaviour, Inf_Interact
         {
             if (oxyValue < 1)
             {
+                useCoin.Play();
                 Player.Instance.AddOxygen(oxy, Cost);
+                UIManager.Instance.ShowTip("Oxygen has been added! ", 0.1f);
             }
             else
             {
-                UIManager.Instance.ShowTip("You don't need to do that");
+                UIManager.Instance.ShowTip("You don't need to do that",0.2f);
             }
         }
         else
         {
-            UIManager.Instance.ShowTip("You need more money...");
+            UIManager.Instance.ShowTip("You need more money...",0.2f);
         }
     }
 

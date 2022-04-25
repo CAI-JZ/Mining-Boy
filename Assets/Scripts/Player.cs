@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float CurrentOxygen;
     [SerializeField]
     private float MaxOxygen;
+    [SerializeField]
     private float OxygenCost;
 
     public float _MayOxygen => MaxOxygen;
@@ -21,13 +22,12 @@ public class Player : MonoBehaviour
 
     [Header("【Object】")]
     // Pick Data
+    //[SerializeField]
+    //private GameObject[] Picks;
     [SerializeField]
-    private GameObject[] Picks;
-    [SerializeField]
-    private Light View;
-
     private float PickStength = 3;
-    public int PickLevel { get; private set; }
+    [SerializeField]
+    public int PickLevel; //{ get; private set; }
     public float Strength => PickStength;
     [SerializeField]
     private int ViewLevel;
@@ -37,8 +37,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int viewLevel;
 
-    public event Action<GameObject> PickUpdate;
+    public event Action<int> PickUpdate;
+    public event Action<int> ViewUpdate;
 
+    AudioSource gameover;
 
     private void Awake()
     {
@@ -51,19 +53,8 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        gameover = GetComponent<AudioSource>();
         Money = 0;
-    }
-
-    private void Update()
-    {
-#if UNITY_EDITOR
-        UpdateViewFiled(viewLevel);
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            UpdatePick(0);
-        }
-#endif
     }
 
 
@@ -80,28 +71,12 @@ public class Player : MonoBehaviour
 
     public void GetNewPick(int pickLevel)
     {
-        Picks[PickLevel].SetActive(false);
-        Picks[pickLevel].SetActive(true);
+        PickStength = 3 + 3 * pickLevel;
+        PickUpdate?.Invoke(pickLevel);
+        print("已升级镐子" + pickLevel);
         PickLevel = pickLevel;
-        PickStength = 3 + 3 * PickLevel;
-        PickUpdate?.Invoke(Picks[PickLevel]);
     }
 
-    public void UpdatePick(float cost)
-    {
-        Picks[PickLevel].SetActive(false);
-        PickLevel = PickLevel + 1;
-        Picks[PickLevel].SetActive(true);
-        PickStength = 3 + 3 * PickLevel;
-        Money -= cost;
-        PickUpdate?.Invoke(Picks[PickLevel]);
-    }
-
-    public bool CanUpgradePick()
-    {
-        bool can = PickLevel < Picks.Length - 1;
-        return can;
-    }
 
     public void updateOxygen(float newOxy)
     {
@@ -120,49 +95,9 @@ public class Player : MonoBehaviour
 
     public void UpdateViewFiled(int lightLevel)
     {
-        switch (lightLevel)
-        {
-            case 1:
-                View.range = 4;
-                View.intensity = 5;
-                ViewLevel = lightLevel;
-                break;
-            case 2:
-                View.range = 5.5f;
-                View.intensity = 5f;
-                ViewLevel = lightLevel;
-                break;
-            case 3:
-                View.range = 12;
-                View.intensity = 3f;
-                ViewLevel = lightLevel;
-                break;
-        }
+        ViewUpdate?.Invoke(lightLevel);
+        ViewLevel = lightLevel;
     }
-
-    void ChangeViewLightColor(int Level)
-    {
-        switch (Level)
-        {
-            case 1:
-                //暖色黄光
-                return;
-            case 2:
-                //暖色黄光
-                return;
-            case 3:
-                //暖色黄光
-                return;
-            case 4:
-                //暖色黄光
-                return;
-            case 5:
-                //暖色黄光
-                return;
-        }
-        
-    }
-
 
     public void UseOxygen()
     {
@@ -173,9 +108,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GameManager.instance.GameOver();
-        }
-         
+            gameover.Play();
+            StartCoroutine(GameOver());
+        }        
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        UIManager.Instance.GameOver();
+        GameManager.instance.GameOver();
     }
 
     public void AddOxygen(float Oxygen, float cost)
@@ -196,8 +138,8 @@ public class Player : MonoBehaviour
     {
         MaxOxygen = 100;
         CurrentOxygen = MaxOxygen;
-        UpdateViewFiled(0);
-        GetNewPick(0);
+        ViewLevel = 0;
+        PickLevel = 0;
         Money = 0;
     }
 }

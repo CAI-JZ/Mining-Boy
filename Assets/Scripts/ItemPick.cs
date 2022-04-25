@@ -27,13 +27,15 @@ public class ItemPick : MonoBehaviour, Inf_Interact
         {
             _Animator.SetTrigger("Open");
             OpenChest.Play();
-            if (PickLevel > Player.Instance.PickLevel)
+            int pick = Player.Instance.PickLevel;
+            print(pick);
+            if (PickLevel > pick)
             {
                 StartCoroutine(PlayerNewPick());
             }
             else
             {
-                UIManager.Instance.ShowTip("Got a new pick");
+                UIManager.Instance.ShowTip("Got a new pick",0.2f);
             }
             IsOpen = true;
         }
@@ -44,7 +46,7 @@ public class ItemPick : MonoBehaviour, Inf_Interact
     {
         yield return new WaitForSecondsRealtime(0.5f);
         Player.Instance.GetNewPick(PickLevel);
-        UIManager.Instance.ShowTip("New Pick is equiped...");
+        UIManager.Instance.ShowTip("New Pick is equiped...",0.2f);
         _light.SetActive(false);
 
     }

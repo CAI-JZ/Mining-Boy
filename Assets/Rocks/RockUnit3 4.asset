@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RockUnit3 4
   m_EditorClassIdentifier: 
   Value: 40
-  MaxDurability: 10
+  MaxDurability: 12
   ArtWork: {fileID: 6679969680714787207, guid: acf560b699e4ae54d8edbeec88caff32, type: 3}
   AppearanceLevel: 3
   SpiecalFeature: 

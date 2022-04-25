@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickLevel: 0
-  _light: {fileID: 0}
+  _light: {fileID: 5377083412028036662}
   OpenChest: {fileID: 6549785516586395606}
 --- !u!82 &6549785516586395606
 AudioSource:

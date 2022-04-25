@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        UI.SendMessage("GameStart");
+        UIManager.Instance.GameStart();
         NextLevel();
     }
 
@@ -61,5 +61,15 @@ public class GameManager : MonoBehaviour
         print("level: " + LevelIndex);
         
     }
+
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
 
 }

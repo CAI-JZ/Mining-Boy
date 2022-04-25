@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6291762399338101715
 Transform:
   m_ObjectHideFlags: 0
@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6291762399647075635
 Transform:
   m_ObjectHideFlags: 0
@@ -591,6 +591,13 @@ MonoBehaviour:
   CheckPoint: {fileID: 5256270098184212766}
   PickAnim: {fileID: 1459339959}
   Footpoint: {fileID: 8384080888590645506}
+  Picks:
+  - {fileID: 6291762400088561505}
+  - {fileID: 6291762399338101714}
+  - {fileID: 6291762399647075634}
+  - {fileID: 6291762400396788057}
+  currentPick: 0
+  View: {fileID: 1346888200}
 --- !u!61 &487374584
 BoxCollider2D:
   m_ObjectHideFlags: 0
