@@ -596,7 +596,6 @@ MonoBehaviour:
   - {fileID: 6291762399338101714}
   - {fileID: 6291762399647075634}
   - {fileID: 6291762400396788057}
-  currentPick: 0
   View: {fileID: 1346888200}
 --- !u!61 &487374584
 BoxCollider2D:

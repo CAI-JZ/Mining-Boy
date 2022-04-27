@@ -121,6 +121,7 @@ public class UIManager : MonoBehaviour
 
     public void onbtnExit()
     {
+        audio.Play();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

@@ -125,8 +125,8 @@ public class PlayerController : MonoBehaviour
                 View.intensity = 5f;
                 break;
             case 3:
-                View.range = 12;
-                View.intensity = 3f;
+                View.range = 15;
+                View.intensity = 2f;
                 break;
         }
     }

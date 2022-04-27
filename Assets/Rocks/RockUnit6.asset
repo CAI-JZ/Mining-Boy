@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb8b8f27aed173488d395bf663b77a8, type: 3}
   m_Name: RockUnit6
   m_EditorClassIdentifier: 
-  Value: 200
-  MaxDurability: 25
+  Value: 400
+  MaxDurability: 36
   ArtWork: {fileID: -1765999431172142786, guid: acf560b699e4ae54d8edbeec88caff32, type: 3}
-  AppearanceLevel: 6
+  AppearanceLevel: 4
   SpiecalFeature: 
   FeatureValue: 0
   RockLevel: 3

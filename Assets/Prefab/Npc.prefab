@@ -196,6 +196,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9129418847992593406, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9187608
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129418847992593406, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+      propertyPath: m_Size.y
+      value: 0.77557313
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129418847992593406, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.019182742
+      objectReference: {fileID: 0}
+    - target: {fileID: 9129418847992593406, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.030387342
+      objectReference: {fileID: 0}
     - target: {fileID: 9129418847992593407, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -243,8 +259,39 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9129418847992593405, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+--- !u!1 &8854381712783010378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9129418847992593393, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
+  m_PrefabInstance: {fileID: 311631641971773883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8854381712783010372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9129418847992593407, guid: fd92f71ee3693dd488c48c4287f94412, type: 3}
   m_PrefabInstance: {fileID: 311631641971773883}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &5973398633346837517
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854381712783010378}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.014691174, y: 0.0013504028}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2437872, y: 1.1776986}
+  m_EdgeRadius: 0

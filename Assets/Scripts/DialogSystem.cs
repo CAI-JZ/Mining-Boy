@@ -26,6 +26,7 @@ public class DialogSystem : MonoBehaviour,Inf_Interact
     [SerializeField]
     private string FirstTalk;
     bool stopTalking = false;
+    bool canTalk;
 
     List<string> DialogList = new List<string>();
 
@@ -67,32 +68,35 @@ public class DialogSystem : MonoBehaviour,Inf_Interact
 
     public void PlayerInteract(float pickStrength)
     {
-        if (!DialogUI.activeSelf)
-        {
-            DialogUI.SetActive(true);
-            Buttons.SetActive(true);
-            text.ShowTextByTyping(FirstTalk);
-        }
-        if (IsTalk)
+        if (canTalk)
         {
 
-            if (index == DialogList.Count)
+            if (!DialogUI.activeSelf)
             {
-                DialogUI.SetActive(false);
-                IsTalk = false;
-                index = 0;
-                return;
+                DialogUI.SetActive(true);
+                Buttons.SetActive(true);
+                text.ShowTextByTyping(FirstTalk);
             }
-            text.ShowTextByTyping(DialogList[index]);
-            index++;
-        }
-        if (IsOpenDoor)
-        {
-            if (!stopTalking)
+            if (IsTalk)
             {
+
+                if (index == DialogList.Count)
+                {
+                    DialogUI.SetActive(false);
+                    IsTalk = false;
+                    index = 0;
+                    return;
+                }
+                text.ShowTextByTyping(DialogList[index]);
+                index++;
+            }
+            if (IsOpenDoor)
+            {
+                if (!stopTalking)
+                {
                     if (Player.Instance.Money - Door.GetComponent<DoorNextLevel>().Cost >= 0)
                     {
-                        text.ShowTextByTyping("...<0.7>! <0.2>Door is Open...");
+                        text.ShowTextByTyping("...<0.3>! <0.2>Door is Open...");
                         //DialogUI.SetActive(false);
                         Door.GetComponent<DoorNextLevel>().OpenDoor();
                         Buttons.transform.GetChild(1).gameObject.SetActive(false);
@@ -102,14 +106,15 @@ public class DialogSystem : MonoBehaviour,Inf_Interact
                     {
                         text.ShowTextByTyping("You need more money...");
                         stopTalking = true;
-                    }              
-            }
-            else
-            {
-                DialogUI.SetActive(false);
-                IsOpenDoor = false;
-                stopTalking = false;
-                return;
+                    }
+                }
+                else
+                {
+                    DialogUI.SetActive(false);
+                    IsOpenDoor = false;
+                    stopTalking = false;
+                    return;
+                }
             }
         }
 
@@ -138,5 +143,22 @@ public class DialogSystem : MonoBehaviour,Inf_Interact
         string content = $"Do you want to open the door? You need to pay <color=#FBC531>{cost}</color>.<0.2>.<0.2>.<0.2> !";
         text.ShowTextByTyping(content);
         IsOpenDoor = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            canTalk = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        DialogUI.SetActive(false);
+        Buttons.SetActive(false);
+        index = 0;
+        canTalk = false;
+        IsTalk = false;
     }
 }
