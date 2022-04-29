@@ -21367,6 +21367,14 @@ PrefabInstance:
       propertyPath: Door
       value: 
       objectReference: {fileID: 411795787}
+    - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
+      propertyPath: TextFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 179fcb2396220d946bb4f52038667205, type: 3}
+    - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
+      propertyPath: FirstTalk
+      value: Welcome, this time you neet to collect <color=#D49100>2000</color> coins.
+      objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898241, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_Name
       value: Npc

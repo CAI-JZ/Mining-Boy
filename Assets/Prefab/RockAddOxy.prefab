@@ -195,7 +195,7 @@ MonoBehaviour:
   RockDur: {fileID: 7615302144012313662}
   DurBar: {fileID: 9216078249999909691}
   PickProcess: 0
-  TotalValue: 20
+  TotalValue: 30
   HitRock: {fileID: 5547198820867589386}
 --- !u!61 &115972765
 BoxCollider2D:
