@@ -1035,7 +1035,8 @@ PrefabInstance:
       objectReference: {fileID: 4900000, guid: 815be413f736cfd4ea6ec6dc67f11c02, type: 3}
     - target: {fileID: 8854381712783010379, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: FirstTalk
-      value: Pay the money, you can't open the door without money.
+      value: Pay <color=#D49100>400</color> coins, you can't open the door without
+        coins.
       objectReference: {fileID: 0}
     - target: {fileID: 9044600247280898241, guid: d03d4a4add0879f448986570fcebee4a, type: 3}
       propertyPath: m_Name
@@ -7967,9 +7968,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 545639569328043632, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018451056617196812, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128887711802032692, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128887711802032692, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.79
+      objectReference: {fileID: 0}
     - target: {fileID: 6058125840716725198, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
       propertyPath: m_FontData.m_Alignment
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015507341400063392, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
+      propertyPath: Cost
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9015507341400063394, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
       propertyPath: m_Name

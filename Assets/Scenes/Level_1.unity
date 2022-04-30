@@ -7732,14 +7732,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2018451056617196812, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 9015507341400063392, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
-      propertyPath: Cost
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 9015507341400063394, guid: cf59a30aea805384a874271b99bd1a6e, type: 3}
       propertyPath: m_Name
       value: ShopOxy
